@@ -1,5 +1,8 @@
 # Cornerstone responsive starter theme for WordPress
 
+Forked by error500
+(Im trying to integer scss support and a bower install.)
+
 
 Cornerstone is a WordPress starter theme based on the Zurb Foundation Responsive Framework. Cornerstone aims to provide a lightweight starter theme that is responsive and SEO friendly that web designers can build great looking websites on.
 
@@ -10,7 +13,7 @@ Cornerstone is not meant to be used as is. This theme is designed to be used as 
 
 ## Download
 
-Clone the git repo `https://github.com/thewirelessguy/cornerstone.git` or [download the archive](https://github.com/thewirelessguy/cornerstone/archive/master.zip).
+Clone the git repo `git clone https://github.com/error500/cornerstone.git` or [download the archive](https://github.com/thewirelessguy/cornerstone/archive/master.zip).
 
 ## Authors
 
@@ -23,3 +26,22 @@ Foundation was made by [ZURB](http://foundation.zurb.com/), a product design com
 Stephen is a web designer and Android app developer based in Preston, UK
 + [Twitter @wirelessguyuk](http://twitter.com/wirelessguyuk)
 + [Website](http://thewirelessguy.co.uk)
+
+#Added in this fork#
+##Changes##
+Moved some folders : all dependencies in /libs
+sass compliant : develop your scss in the child theme and compile into parent 
+
+##Installation##
+
+First: clone parent and child themes 
+
+
+Then in parent type
+`bower install`
+
+In child type
+`compass watch`
+
+In child, develop your css rules in /scss/apps.scss
+
