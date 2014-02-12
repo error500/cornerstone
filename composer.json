@@ -1,6 +1,7 @@
 {
     "name": "error500/cornerstone",
     "description": "Cornerstone : a foundation 5 theme for wordpress",
+	"version": "0.0.1-dev",
     "authors": [
         {
             "name": "error500",
