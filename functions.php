@@ -12,6 +12,9 @@ add_theme_support( 'post-formats', array( 'aside', 'image', 'link', 'quote', 'st
 // Add thumbnail support
 add_theme_support( 'post-thumbnails' );
 
+// Add widget live previews support
+add_theme_support('widget-customizer');
+
 // Disable the admin bar, set to true if you want it to be visible.
 show_admin_bar(FALSE);
 
@@ -42,7 +45,7 @@ if ( ! function_exists( 'load_cornerstone_css' ) ) {
 			'foundation_css',
 			get_template_directory_uri() . '/libs/foundation/css/foundation.min.css',
 			array('normalize'),
-			'5.0.3',
+			'5.1.1',
 			'all'
 		);*/
 
@@ -74,7 +77,7 @@ if ( ! function_exists( 'load_cornerstone_scripts' ) ) {
 			'foundation_modernizr_js',
 			get_template_directory_uri() . '/libs/modernizr/modernizr.js',
 			array(),
-			'2.6.2',
+			'2.7.1',
 			false
 		);
 
@@ -82,7 +85,7 @@ if ( ! function_exists( 'load_cornerstone_scripts' ) ) {
 			'foundation_js',
 			get_template_directory_uri() . '/libs/foundation/js/foundation.min.js',
 			array('jquery'),
-			'5.0.3',
+			'5.1.1',
 			true
 		);
 
@@ -147,7 +150,7 @@ if (function_exists('register_sidebar')) {
 	register_sidebar(array(
 		'name'=> 'Footer Sidebar',
 		'id' => 'footer_sidebar',
-		'before_widget' => '<div id="%1$s" class="medium-4 columns %2$s">',
+		'before_widget' => '<div id="%1$s" class="small-12 medium-4 columns %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4>',
 		'after_title' => '</h4>',

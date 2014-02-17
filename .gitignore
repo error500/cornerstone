@@ -13,5 +13,6 @@ wp-content/backups/
 sitemap.xml
 sitemap.xml.gz
 /libs
-/css
+/css/**
+/js/**
 /vendor
