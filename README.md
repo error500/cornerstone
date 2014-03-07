@@ -1,4 +1,4 @@
-# Cornerstone responsive starter theme for WordPress
+﻿# Cornerstone responsive starter theme for WordPress
 
 Forked by error500
 (Im trying to integer scss support and a bower install.)
@@ -36,12 +36,24 @@ sass compliant : develop your scss in the child theme and compile into parent
 
 First: clone parent and child themes 
 
+in `/wp-content/themes` run 
 
-Then in parent type
+`git clone https://github.com/error500/cornerstone.git`
+
+`cd cornerstone`
+
 `bower install`
 
-In child type
+Then install Child :
+
+`cd ..`
+
+`git clone https://github.com/error500/cornerstone-child-theme.git`
+
+`cd cornerstone-child-theme`
+
 `compass watch`
 
-In child, develop your css rules in /scss/apps.scss
+
+... and start develop your theme in /scss/apps.scss
 
