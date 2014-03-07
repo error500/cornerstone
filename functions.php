@@ -442,4 +442,8 @@ function cornerstone_wp_title( $title, $sep ) {
 	return $title;
 }
 add_filter( 'wp_title', 'cornerstone_wp_title', 10, 2 );
+
+require_once ( get_stylesheet_directory() . '/theme-options.php' );
+
+
 ?>
