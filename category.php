@@ -53,3 +53,5 @@ get_header(); ?>
 	<?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>
+
+<?php FB::info('Current script '.basename(__FILE__)); ?>

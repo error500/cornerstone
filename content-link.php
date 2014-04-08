@@ -24,3 +24,5 @@
 		<?php edit_post_link( __( 'Edit', 'cornerstone' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer>
 </article>
+
+<?php FB::info('Current script '.basename(__FILE__)); ?>

@@ -66,3 +66,4 @@ get_header();
 </div>
 
 <?php get_footer(); ?>
+<?php FB::info('Current script '.basename(__FILE__)); ?>

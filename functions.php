@@ -41,13 +41,13 @@ if ( ! function_exists( 'load_cornerstone_css' ) ) {
 			'all'
 		);
 
-		/*wp_enqueue_style(
+		wp_enqueue_style(
 			'foundation_css',
 			get_template_directory_uri() . '/libs/foundation/css/foundation.min.css',
 			array('normalize'),
 			'5.1.1',
 			'all'
-		);*/
+		);
 
 		wp_enqueue_style(
 			'foundation_ie8_grid',
@@ -403,6 +403,7 @@ function cornerstone_entry_meta() {
 		$date,
 		$author
 	);
+	
 }
 endif;
 

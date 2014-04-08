@@ -18,3 +18,5 @@
 		<?php get_search_form(); ?>
 	</div>
 </article>
+
+<?php FB::info('Current script '.basename(__FILE__)); ?>

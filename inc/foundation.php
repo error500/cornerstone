@@ -79,7 +79,7 @@ class cornerstone_walker extends Walker_Nav_Menu {
 			if ( $depth == 0 && $this->nav_bar['in_top_bar'] == false ) {
 
 				$classes[] = 'has-flyout';
-				$flyout_toggle = '<a href="#" class="flyout-toggle"><span></span></a>';
+				$flyout_toggle = '<a href="#" class="flyout-toggle"><span>toto</span></a>';
 
 			} else if ( $this->nav_bar['in_top_bar'] == true ) {
 
