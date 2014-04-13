@@ -33,7 +33,7 @@ if ( ! function_exists( 'load_cornerstone_css' ) ) {
 
 		global $wp_styles;
 
-		wp_enqueue_style(
+		/*wp_enqueue_style(
 			'normalize',
 			get_template_directory_uri() . '/libs/foundation/css/normalize.css',
 			array(),
@@ -56,14 +56,8 @@ if ( ! function_exists( 'load_cornerstone_css' ) ) {
 			'1.0',
 			'all'
 		);
-		wp_enqueue_style(
-		'app',
-		get_template_directory_uri() . '/css/app.css',
-		array( 'normalize' ),
-		'1.0',
-		'all'
-				);
-		$wp_styles->add_data( 'foundation_ie8_grid', 'conditional', 'lt IE 8' );
+		*/
+		//$wp_styles->add_data( 'foundation_ie8_grid', 'conditional', 'lt IE 8' );
 
 	}
 
