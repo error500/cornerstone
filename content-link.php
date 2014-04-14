@@ -25,4 +25,3 @@
 	</footer>
 </article>
 
-<?php FB::info('Current script '.basename(__FILE__)); ?>

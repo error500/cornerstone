@@ -42,4 +42,4 @@
 
 </article>
 
-<?php FB::info('Current script parent'.basename(__FILE__)); ?>
+
