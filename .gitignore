@@ -16,3 +16,5 @@ sitemap.xml.gz
 /css/**
 /js/**
 /vendor
+gulpfile.js
+/node_modules
