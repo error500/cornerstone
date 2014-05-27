@@ -30,4 +30,41 @@ function cornerstone_display_video($atts){
 
 add_shortcode( 'video', 'cornerstone_display_video' );
 
+
+
+function cornerstone_shortcode_miniloop ($atts) {
+	global $cornerstone_displaying_loop ;
+
+	if (!isset($cornerstone_displaying_loop)) {
+		$cornerstone_displaying_loop = true;
+		/* usage
+		 [loop filter_by=post_type filter_value=post posts_per_page=3 orderby=date oreder=DESC]*/
+
+		 //Default value for params
+		$a = shortcode_atts( array(
+	        'filter_by' => 'post_type',
+	        'filter_value' => 'post',
+	        'posts_per_page' =>'3',
+	        'orderby' => 'date', 'order' => 'DESC'
+	    ), $atts );
+		
+		$args = array( $a['filter_by'].'='.$a['filter_value'],
+						 'posts_per_page' => $a['posts_per_page'],
+						 'orderby' => $a['orderby'], 'order' => $a['order'] );
+		ob_start();		
+		$loop = new WP_Query( $args  );
+		while ( $loop->have_posts() ) : $loop->the_post();
+
+			?>
+			<h2><a href="<?php the_permalink() ?>"><?php the_title();?></a></h2>
+			<div class="entry-content">
+			<?php strip_shortcodes(the_excerpt()); ?>
+			</div>
+			<?php
+		endwhile;
+	}
+	return ob_get_clean();
+}
+
+add_shortcode( 'loop', 'cornerstone_shortcode_miniloop' );
 ?>

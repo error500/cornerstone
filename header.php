@@ -61,3 +61,5 @@
       ?>
   </section>
 </nav>
+
+<?php get_template_part( 'orbit', get_post_format() ); ?>
