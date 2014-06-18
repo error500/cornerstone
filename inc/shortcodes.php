@@ -132,37 +132,6 @@ add_shortcode( 'loop', 'cornerstone_shortcode_miniloop' );
 
 
 
-/**
-*	Experimental : insertion of button in tyniMCE interface to manage shortcodes
-*/
-
-add_action ('init','add_buttons');
-
-
-
-function add_buttons () {
-	if(current_user_can('edit_posts') && current_user_can('edit_pages')) {
-		add_filter('mce_external_plugins', 'myplugin_register_tinymce_javascript');
-		add_filter('mce_buttons','register_buttons');
-	}
-}
-
-
-	//$plugins['shortvideo'] = get_bloginfo ('template_url').'/js/tmce/shortvideo.js';
-	
-
-function myplugin_register_tinymce_javascript($plugin_array) {
-   $plugin_array['shortvideo'] =  get_bloginfo ('template_url').'/js/tmce/shortvideo.js';
-
-   return $plugin_array;
-}
-
-
-function register_buttons ($buttons) {
-	array_push($buttons,'shortvideo');
-	return $buttons;
-}
-
 
 
 ?>
