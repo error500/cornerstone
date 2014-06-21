@@ -98,7 +98,7 @@ function cornerstone_shortcode_miniloop ($atts) {
 			
 		}
 		if (isset($a['class'])) {
-			echo $a['class'];
+			
 			//  match tool to verify that $a['class'] matches  ([0-9],)* eg. 15,58,69 or 4 
 			if  ( preg_match ('/^([0-9a-z-]*,)*[0-9a-z-]*$/',$a['post__in'] )) {
 				$class = str_replace(',',' ', $a['class']);
