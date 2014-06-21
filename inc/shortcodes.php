@@ -79,7 +79,7 @@ function cornerstone_shortcode_miniloop ($atts) {
 		extract($a);
 		$query = array();
 		if (isset($a['filter_by']) && isset($a['filter_value'])) {
-			array_push ($query , $a['filter_by'].'='.$a['filter_value']);
+			$query[$a['filter_by']]=$a['filter_value'];
 		}
 		if (isset($a['posts_per_page'])) {
 			$query['posts_per_page']= $a['posts_per_page'];
@@ -108,6 +108,7 @@ function cornerstone_shortcode_miniloop ($atts) {
 			<?php }
 			?> </div><?php
 		} else {
+
 			$loop = new WP_Query( $query );
 			?>
 			<ul class="<?php echo $class; ?>">
@@ -117,20 +118,41 @@ function cornerstone_shortcode_miniloop ($atts) {
 			while ( $loop->have_posts() ) : $loop->the_post();
 
 				?>
-				<li><h2><a href="<?php the_permalink() ?>"><?php the_title();?></a></h2>
+				<li><h2><a href="<?php the_permalink() ?>"><?php the_title();?></a></h2><?php edit_post_link('Edit','','<strong>|</strong>'); ?>  
 				<div class="entry-content">
 				<?php strip_shortcodes(the_excerpt()); ?>
 				</div></li>
 				<?php
 			endwhile;
+			wp_reset_postdata();
+			$loop =null;
 			}
 		}
-	return ob_get_clean();
+	$content = ob_get_contents();
+	ob_end_clean();
+	return $content;
 }
 
 add_shortcode( 'loop', 'cornerstone_shortcode_miniloop' );
 
 
+/*
+function cornerstone_test ($atts) {
+	
+		//Default value for params
+		$a = shortcode_atts( array(
+	        'testval' => 'toto'
+	    ), $atts );
+		extract($a);
+		ob_start();	
+		?>
+		<li><?php echo $a['testval'] ;?></li>
+		<?php
+	    return ob_get_clean();
+	}
+	
+
+add_shortcode( 'loop', 'cornerstone_test' );*/
 
 
 
