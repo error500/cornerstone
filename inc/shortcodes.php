@@ -59,7 +59,7 @@ add_shortcode( 'video', 'cornerstone_display_video' );
 *		'filter_value' => 'post',
 *		'posts_per_page' =>'3',
 *		'orderby' => 'date', 'order' => 'DESC',
-*		'class' => 'small-block-grid-3'
+*		'class' => 'small-block-grid-1,medium-block-grid-3'
 */
 function cornerstone_shortcode_miniloop ($atts) {
 	global $cornerstone_displaying_loop ;
@@ -74,7 +74,7 @@ function cornerstone_shortcode_miniloop ($atts) {
 	        'post__in' => null,
 	        'posts_per_page' =>'3',
 	        'orderby' => 'date', 'order' => 'DESC',
-	        'class' => 'small-block-grid-3'
+	        'class' => 'small-block-grid-1,medium-block-grid-3'
 	    ), $atts );
 		extract($a);
 		$query = array();
@@ -94,6 +94,16 @@ function cornerstone_shortcode_miniloop ($atts) {
 				$query['post__in'] = explode(',',$a['post__in']);	
 			} else {
 				$shortcode_msg[] = 'Le champ post__in n\'est pas défini correctement : il doit correspondre à une succession d\'ID séparés par des virgules : 15,8,9';
+			}
+			
+		}
+		if (isset($a['class'])) {
+			echo $a['class'];
+			//  match tool to verify that $a['class'] matches  ([0-9],)* eg. 15,58,69 or 4 
+			if  ( preg_match ('/^([0-9a-z-]*,)*[0-9a-z-]*$/',$a['post__in'] )) {
+				$class = str_replace(',',' ', $a['class']);
+			} else {
+				$shortcode_msg[] = 'Le champ class n\'est pas défini correctement : il doit correspondre à une succession de classes séparées par des virgules : 15,8,9';
 			}
 			
 		}
@@ -125,7 +135,7 @@ function cornerstone_shortcode_miniloop ($atts) {
 				<?php
 			endwhile;
 			wp_reset_postdata();
-			$loop =null;
+
 			}
 		}
 	$content = ob_get_contents();
