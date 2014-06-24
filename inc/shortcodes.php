@@ -121,19 +121,19 @@ function cornerstone_shortcode_miniloop ($atts) {
 
 			$loop = new WP_Query( $query );
 			?>
-			<section><ul class="<?php echo $class; ?>">
+			<section class="sc_section"><ul class="<?php echo $class; ?>">
 			<?php
 
 
 			while ( $loop->have_posts() ) : $loop->the_post();
-				?><li><article>
+				?><li><article class="sc_article">
 				<?php if ( has_post_thumbnail() ) {?>
 					<header><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
 					<?php the_post_thumbnail('large'); ?>
 					</a></header>
 				<?php } ?>
 				<h2><a href="<?php the_permalink() ?>"><?php the_title();?></a></h2><?php edit_post_link('Edit','','<strong>|</strong>'); ?>  
-				<div class="entry-content">
+				<div class="sc_excerpt">
 				<?php strip_shortcodes(the_excerpt()); ?>
 				</div></article></li>
 				<?php
