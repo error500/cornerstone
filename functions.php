@@ -25,48 +25,14 @@ include('inc/shortcodes.php');
 // Add theme support for Automatic Feed Links
 add_theme_support( 'automatic-feed-links' );
 
-// Enqueue CSS and scripts
+// Enqueue  scripts
 
-if ( ! function_exists( 'load_cornerstone_css' ) ) {
 
-	function load_cornerstone_css() {
-
-		global $wp_styles;
-
-		/*wp_enqueue_style(
-			'normalize',
-			get_template_directory_uri() . '/libs/foundation/css/normalize.css',
-			array(),
-			'2.1.2',
-			'all'
-		);
-
-		wp_enqueue_style(
-			'foundation_css',
-			get_template_directory_uri() . '/libs/foundation/css/foundation.min.css',
-			array('normalize'),
-			'5.1.1',
-			'all'
-		);
-
-		wp_enqueue_style(
-			'foundation_ie8_grid',
-			get_template_directory_uri() . '/css/ie8-grid-foundation-4.css',
-			array( 'foundation_css' ),
-			'1.0',
-			'all'
-		);
-		*/
-		//$wp_styles->add_data( 'foundation_ie8_grid', 'conditional', 'lt IE 8' );
-
-	}
-
-}
 
 if ( ! function_exists( 'load_cornerstone_scripts' ) ) {
 
 	function load_cornerstone_scripts() {
-
+		
 		wp_enqueue_script(
 			'foundation_modernizr_js',
 			get_template_directory_uri() . '/libs/modernizr/modernizr.js',
@@ -79,7 +45,7 @@ if ( ! function_exists( 'load_cornerstone_scripts' ) ) {
 			'foundation_js',
 			get_template_directory_uri() . '/libs/foundation/js/foundation.min.js',
 			array('jquery'),
-			'5.1.1',
+			'5.3.0',
 			true
 		);
 
@@ -95,7 +61,7 @@ if ( ! function_exists( 'load_cornerstone_scripts' ) ) {
 
 }
 
-add_action( 'wp_enqueue_scripts', 'load_cornerstone_css', 0 );
+
 add_action( 'wp_enqueue_scripts', 'load_cornerstone_scripts', 0 );
 
 
@@ -438,7 +404,9 @@ function cornerstone_wp_title( $title, $sep ) {
 }
 add_filter( 'wp_title', 'cornerstone_wp_title', 10, 2 );
 
-require_once ( get_stylesheet_directory() . '/theme-options.php' );
+require_once ( 'theme-options.php' );
+
+
 
 
 ?>

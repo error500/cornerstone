@@ -152,23 +152,32 @@ function cornerstone_shortcode_miniloop ($atts) {
 add_shortcode( 'loop', 'cornerstone_shortcode_miniloop' );
 
 
-/*
-function cornerstone_test ($atts) {
-	
-		//Default value for params
-		$a = shortcode_atts( array(
-	        'testval' => 'toto'
-	    ), $atts );
-		extract($a);
-		ob_start();	
-		?>
-		<li><?php echo $a['testval'] ;?></li>
-		<?php
-	    return ob_get_clean();
+add_action ('init','add_buttons');
+
+
+
+function add_buttons () {
+	if(current_user_can('edit_posts') && current_user_can('edit_pages')) {
+		add_filter('mce_external_plugins', 'myplugin_register_tinymce_javascript');
+		add_filter('mce_buttons','register_buttons');
 	}
+}
+
+
+	//$plugins['shortvideo'] = get_bloginfo ('template_url').'/js/tmce/shortvideo.js';
 	
 
-add_shortcode( 'loop', 'cornerstone_test' );*/
+function myplugin_register_tinymce_javascript($plugin_array) {
+   $plugin_array['shortvideo'] =  get_bloginfo ('template_url').'/js/tmce/shortvideo.js';
+
+   return $plugin_array;
+}
+
+
+function register_buttons ($buttons) {
+	array_push($buttons,'shortvideo');
+	return $buttons;
+}
 
 
 
