@@ -15,15 +15,13 @@ function cornerstone_display_video($atts){
 	extract( shortcode_atts( array(
 		'code' => 'undefined',
 		'type' => 'youtube',
-		'width' => 'small-12 medium-12 large-6',
-		'position' => 'small-centered large-uncentered'
-	), $atts ) );
+		'class' =>'small-12 medium-12 large-6 columns small-centered large-uncentered'
+ 	), $atts ) );
 	
-	$retval .='<div class="row"><div class="'.$width.' columns '.$position.'">';
+	$retval .='<div class="row"><div class="'.$class.'">';
 	if ($type=='youtube' && $code!="undefined") {
 		$retval .='<div class="flex-video">';
-		$retval .='<iframe "width="420" height="315" src="http://www.youtube.com/embed/' . $code . '" frameborder="0" allowfullscreen></iframe>
-	</div>';
+		$retval .='<iframe "width="420" height="315" src="http://www.youtube.com/embed/' . $code . '" frameborder="0" allowfullscreen></iframe></div>';
 	} else {
 		$retval="Pas de support pour les vidéos de type {$type}";
 	}
@@ -121,19 +119,19 @@ function cornerstone_shortcode_miniloop ($atts) {
 
 			$loop = new WP_Query( $query );
 			?>
-			<section class="sc_section"><ul class="<?php echo $class; ?>">
+			<section class="cs_section"><ul class="<?php echo $class; ?>">
 			<?php
 
 
 			while ( $loop->have_posts() ) : $loop->the_post();
-				?><li><article class="sc_article">
+				?><li><article class="cs_article">
 				<?php if ( has_post_thumbnail() ) {?>
 					<header><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
 					<?php the_post_thumbnail('large'); ?>
 					</a></header>
 				<?php } ?>
 				<h2><a href="<?php the_permalink() ?>"><?php the_title();?></a></h2><?php edit_post_link('Edit','','<strong>|</strong>'); ?>  
-				<div class="sc_excerpt">
+				<div class="cs_excerpt">
 				<?php strip_shortcodes(the_excerpt()); ?>
 				</div></article></li>
 				<?php
