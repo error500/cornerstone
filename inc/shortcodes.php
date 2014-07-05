@@ -212,7 +212,7 @@ function cornerstone_shortcode_tabs ($atts,$content) {
 			<?php 
 			$i=0;
 			foreach($cornerstone_tabs as $tab) { ?>
-				<div class="content<?php echo ($tab['isactive']==true)? ' active ' : '' ?>" id="<?php echo $id.'-'.$i;?>"><p><?php echo $tab['content']?></p></div>
+				<div class="content<?php echo ($tab['isactive']==true)? ' active ' : '' ?>" id="<?php echo $id.'-'.$i;?>"><p><?php echo do_shortcode($tab['content'])?></p></div>
 				<?php
 				$i++;
 			} ?>
