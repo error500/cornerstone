@@ -97,8 +97,8 @@ function cornerstone_shortcode_miniloop ($atts) {
 		}
 		if (isset($a['class'])) {
 			
-			//  match tool to verify that $a['class'] matches  ([0-9],)* eg. 15,58,69 or 4 
-			if  ( preg_match ('/^([0-9a-z-]*,)*[0-9a-z-]*$/',$a['post__in'] )) {
+			//  match tool to verify that $a['class'] matches  ([0-9],)* eg. foo  or foo,bar
+			if  ( preg_match ('/^([0-9a-z-]*,)*[0-9a-z-]*$/',$a['class'] )) {
 				$class = str_replace(',',' ', $a['class']);
 			} else {
 				$shortcode_msg[] = 'Le champ class n\'est pas défini correctement : il doit correspondre à une succession de classes séparées par des virgules : 15,8,9';
@@ -149,6 +149,83 @@ function cornerstone_shortcode_miniloop ($atts) {
 
 add_shortcode( 'loop', 'cornerstone_shortcode_miniloop' );
 
+
+/**
+*	Short code for creating a serie of tabs
+*	Based on foundation tabs syntax
+*   params :
+* 	Codex params see http://codex.wordpress.org/wp_query
+* 		id : an id : needed if you use more than one tab system in a page
+*		tab_list : tab list, seprated by comma
+*		active : the name of the active tab
+*	Foundation params:
+*		class : %TODO% not implemented yet
+*
+*	Example ;
+*		[tab id="le nom de l'onglet"  isactive=true] content of tab toto[/tab]
+*		[tab id="le nom de l'onglet2"] content of tab tutu[/tab]
+*		[tab id="le nom de l'onglet3" islast=true] content of tab tata[/tab]
+*
+*  default values 
+*		'id'=>'name of tab',
+*       'tab_list' => 'tab1,tab2,tab3,tab4',
+*       'active' => ''
+*/
+
+function cornerstone_shortcode_tabs ($atts,$content) {
+	global $cornerstone_displaying_tabs ;
+	global $cornerstone_tabs ;
+
+	//Default value for params
+	$a = shortcode_atts( array(
+        'id' =>'',
+        'isactive'=>'',
+        'islast'=>''
+    ), $atts );
+	extract($a);
+
+	if (!isset($cornerstone_tabs)) {
+		$cornerstone_tabs=array();
+	} 
+
+	$current_tab['id'] = $id;
+	$current_tab['content'] = $content;
+	$current_tab['isactive'] = $isactive;
+	$current_tab['islast'] = $islast;
+	$cornerstone_tabs[] = $current_tab;
+	
+	$render ="";
+	if($islast) {
+		//HTML rendering on last tab only
+		ob_start();		
+		?>	
+		<ul class="tabs" data-tab>
+			<?php 
+			$i=0;
+			foreach($cornerstone_tabs as $tab) { ?>
+				<li class="tab-title<?php echo ($tab['isactive']==true)? ' active ' : '' ?>"><a href="#<?php echo $id.'-'.$i;?>"><?php echo $tab['id'];?></a></li>
+				<?php 
+				$i++;
+			} ?>
+		</ul>
+		<div class="tabs-content">
+			<?php 
+			$i=0;
+			foreach($cornerstone_tabs as $tab) { ?>
+				<div class="content<?php echo ($tab['isactive']==true)? ' active ' : '' ?>" id="<?php echo $id.'-'.$i;?>"><p><?php echo $tab['content']?></p></div>
+				<?php
+				$i++;
+			} ?>
+		</div>
+		<?php
+		$render = ob_get_contents();
+		ob_end_clean();
+		$cornerstone_tabs=array();
+	}
+	return $render;
+}	
+
+add_shortcode( 'tab', 'cornerstone_shortcode_tabs' );
 
 add_action ('init','add_buttons');
 
