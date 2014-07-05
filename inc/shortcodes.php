@@ -227,7 +227,7 @@ function cornerstone_shortcode_tabs ($atts,$content) {
 
 add_shortcode( 'tab', 'cornerstone_shortcode_tabs' );
 
-add_action ('init','add_buttons');
+/*add_action ('init','add_buttons');
 
 
 
@@ -254,6 +254,6 @@ function register_buttons ($buttons) {
 	return $buttons;
 }
 
-
+*/
 
 ?>
