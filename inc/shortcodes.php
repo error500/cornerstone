@@ -227,6 +227,231 @@ function cornerstone_shortcode_tabs ($atts,$content) {
 
 add_shortcode( 'tab', 'cornerstone_shortcode_tabs' );
 
+/**
+*	Short code for creating a serie of colums
+*	Based on foundation columns syntax
+*   params :
+* 	foundation params see http://codex.wordpress.org/wp_query
+* 		class : class for columns (see zurb foundation doc)
+*		status : first|null|last tells if the columns is the first, the last or any one inside (null)
+*
+*	Example ;
+*		[column status=first class="small-4"] The content of the first column[/column]
+*		[column class="small-4"] The content of the second column[/column]
+*		[column status=last class="small-4"] The content of the third column[/column]
+*
+*  default values 
+*       'class' => 'small-12 medium-4'
+*/
+
+function cornerstone_shortcode_columns ($atts,$content) {
+
+	//Default value for params
+	$a = shortcode_atts( array(
+        'class' =>'small-12 medium-4',
+        'status'=>''
+    ), $atts );
+	extract($a);
+
+	$render ="";
+
+	//HTML rendering on last tab only
+	ob_start();		
+	echo ($status=='first')? ' <div class="row"> ' : '' ;
+	echo '<div class="'.$class.' columns">'.do_shortcode($content).'</div>' ;
+	echo ($status=='last')? ' </div> ' : '' ;
+		
+	$render = ob_get_contents();
+	ob_end_clean();
+	
+	return $render;
+}	
+	
+add_shortcode( 'column', 'cornerstone_shortcode_columns' );
+
+
+
+/**
+*	Short code for creating a grid
+*	Based on foundation grid syntax
+*   params :
+* 	foundation params see http://codex.wordpress.org/wp_query
+* 		class : class for grid (see zurb foundation doc)
+*		status : first|null|last tells if the columns is the first, the last or any one inside (null)
+*
+*	Example ;
+*		[grid status=first class="small-4"] The content of the first grid[/grid]
+*		[grid class="small-block-grid-2 medium-block-grid-3 large-block-grid-4"] The content of the second grid[/grid]
+*		[grid status=last class="small-4"] The content of the third grid[/grid]
+*
+*  default values 
+*       'class' => 'small-12 medium-4'
+*/
+
+function cornerstone_shortcode_grid ($atts,$content) {
+
+	//Default value for params
+	$a = shortcode_atts( array(
+        'class' =>'small-block-grid-2 medium-block-grid-3 large-block-grid-4',
+        'status'=>''
+    ), $atts );
+	extract($a);
+
+	$render ="";
+
+	//HTML rendering on last tab only
+	ob_start();		
+	echo ($status=='first')? '<ul class="'.$class.'">' : '' ;
+	echo '<li>'.do_shortcode($content).'</li>' ;
+	echo ($status=='last')? ' </ul> ' : '' ;
+		
+	$render = ob_get_contents();
+	ob_end_clean();
+	
+	return $render;
+}	
+	
+add_shortcode( 'grid', 'cornerstone_shortcode_grid' );
+
+/**
+*	Short code for creating a magellan sticky nav bar
+*	Based on foundation magellan syntax
+*   params :
+* 	foundation params see http://codex.wordpress.org/wp_query
+*		no params available
+*	Example ;
+*		[magellan_bar anchor_list=anchor-1,anchor-2,anchor-3]
+*  default values 
+*		no default values
+*/
+
+function cornerstone_shortcode_magellan_bar ($atts,$content) {
+	global $cornerstone_magellan;
+	if (!isset($cornerstone_magellan)) {
+		wp_enqueue_script(
+			'magellan.foundation_js',
+			get_template_directory_uri() . '/libs/foundation/js/foundation/foundation.magellan.js',
+			array('foundation_js'),
+			'5.3.0',
+			true
+		);
+		$cornerstone_magellan = 'loaded';
+	}
+	//Default value for params
+	$a = shortcode_atts( array(
+        'anchor_list' =>'anchor-1,anchor-2,anchor-3'
+    ), $atts );
+	extract($a);
+	$anchors =explode(',',$anchor_list);
+	ob_start();		
+	?>
+	<div data-magellan-expedition="fixed"><dl class="sub-nav">
+		<?php foreach($anchors as $anchor) { 
+			echo '<dd data-magellan-arrival="'.$anchor.'"><a href="#'.$anchor.'">'.$anchor.'</a></dd>';
+		} ?>
+	</dl></div>
+	<?php
+	$render = ob_get_contents();
+	ob_end_clean();
+	
+	return $render;
+}
+add_shortcode( 'magellan_bar', 'cornerstone_shortcode_magellan_bar' );
+/**
+*	Short code for creating a magellan sticky nav
+*	Based on foundation magellan syntax
+*   params :
+* 	foundation params see http://codex.wordpress.org/wp_query
+*		no params available
+*	Example ;
+*		[magellan] First[/magellan]
+*		[magellan] second[/magellan]
+*		[magellan] last[/magellan]
+*  default values 
+*		no default values
+*/
+
+function cornerstone_shortcode_magellan ($atts,$content) {
+	
+	//Default value for params
+	
+	global $cornerstone_magellan;
+	if (!isset($cornerstone_magellan)) {
+		
+		echo "you should add [magellan_bar anchor_list=anchor-1,anchor-2,anchor-3]";
+	}
+	$render ="";
+
+	
+	ob_start();		
+	echo '<h3 data-magellan-destination="'.$content.'">'.$content.'</h3><a name="'.$content.'"></a>' ;
+		
+	$render = ob_get_contents();
+	ob_end_clean();
+	
+	return $render;
+}	
+	
+add_shortcode( 'magellan', 'cornerstone_shortcode_magellan' );
+
+
+
+/**
+*	Short code for creating a clearing  clearing (gallery)
+*	Based on foundation clearing syntax
+*   params :
+* 	foundation params see http://codex.wordpress.org/wp_query
+* 		class : class for grid (see zurb foundation doc)
+*		status : first|null|last tells if the columns is the first, the last or any one inside (null)
+*
+*	Example ;
+*		[clearing status=first path=http://lorempixel.com/400/200/sports/ caption=sport1 paththumb=http://lorempixel.com/30/30/sports/ ]
+*		[clearing  path=http://lorempixel.com/400/200/sports/ caption=sport1 paththumb=http://lorempixel.com/30/30/sports/ ]
+*		[clearing status=last path=http://lorempixel.com/400/200/sports/ caption=sport1 paththumb=http://lorempixel.com/30/30/sports/ ]
+*  default values 
+*       no deafult class
+*/
+
+function cornerstone_shortcode_clearing ($atts,$content) {
+	global $cornerstone_clearing;
+	if (!isset($clearing)) {
+		wp_enqueue_script(
+			'clearing.foundation_js',
+			get_template_directory_uri() . '/libs/foundation/js/foundation/foundation.clearing.js',
+			array('foundation_js'),
+			'5.3.0',
+			true
+		);
+		$clearing = 'loaded';
+	}
+	//Default value for params
+	$a = shortcode_atts( array(
+        'path' =>'lorempixel.com/400/200/sports/',
+        'paththumb'=>'lorempixel.com/30/30/sports/',
+        'caption' => 'default text',
+        'status'=>''
+    ), $atts );
+	extract($a);
+
+	$render ="";
+
+	//HTML rendering on last tab only
+	ob_start();		
+	echo ($status=='first')? '<ul class="clearing-thumbs" data-clearing>' : '' ;
+	echo '<li><a href="'.$path.'"><img data-caption="'.$caption.'" src="'.$paththumb.'"></a></li>';
+	echo '<li>'.do_shortcode($content).'</li>' ;
+	echo ($status=='last')? ' </ul> ' : '' ;
+		
+	$render = ob_get_contents();
+	ob_end_clean();
+	
+	return $render;
+}	
+	
+add_shortcode( 'clearing', 'cornerstone_shortcode_clearing' );
+
+ 
+
 /*add_action ('init','add_buttons');
 
 
