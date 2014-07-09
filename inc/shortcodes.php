@@ -450,35 +450,20 @@ function cornerstone_shortcode_clearing ($atts,$content) {
 	
 add_shortcode( 'clearing', 'cornerstone_shortcode_clearing' );
 
- 
+add_action( 'init', 'cornerstone_buttons' );
 
-/*add_action ('init','add_buttons');
-
-
-
-function add_buttons () {
-	if(current_user_can('edit_posts') && current_user_can('edit_pages')) {
-		add_filter('mce_external_plugins', 'myplugin_register_tinymce_javascript');
-		add_filter('mce_buttons','register_buttons');
-	}
+function cornerstone_buttons() {
+    add_filter( "mce_external_plugins", "cornerstone_add_buttons" );
+    add_filter( 'mce_buttons', 'cornerstone_register_buttons' );
 }
-
-
-	//$plugins['shortvideo'] = get_bloginfo ('template_url').'/js/tmce/shortvideo.js';
-	
-
-function myplugin_register_tinymce_javascript($plugin_array) {
-   $plugin_array['shortvideo'] =  get_bloginfo ('template_url').'/js/tmce/shortvideo.js';
-
-   return $plugin_array;
+function cornerstone_add_buttons( $plugin_array ) {
+	$plugin_array['cornerstone_buttons'] = get_bloginfo ('template_url').'/js/tinymcebuttons.js' ;
+     return $plugin_array;
+    
 }
-
-
-function register_buttons ($buttons) {
-	array_push($buttons,'shortvideo');
-	return $buttons;
+function cornerstone_register_buttons( $buttons ) {
+    array_push( $buttons, 'cornerstone_column' , 'cornerstone_magellan'); 
+    return $buttons;
 }
-
-*/
 
 ?>
