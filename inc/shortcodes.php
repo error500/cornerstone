@@ -3,7 +3,7 @@
 // Shortcodes
 function cornerstone_shortcode_col2($atts, $content=null){
 
-return '<div class="small-12 large-6 columns"><p>' . $content . '</p></div>';
+return '<div class="small-12 large-6 columns"><p>' . strip_shortcodes($content) . '</p></div>';
 
 }
 
@@ -399,15 +399,16 @@ add_shortcode( 'magellan', 'cornerstone_shortcode_magellan' );
 /**
 *	Short code for creating a clearing  clearing (gallery)
 *	Based on foundation clearing syntax
+* 	see http://foundation.zurb.com/docs/components/clearing.html
 *   params :
 * 	foundation params see http://codex.wordpress.org/wp_query
 * 		class : class for grid (see zurb foundation doc)
 *		status : first|null|last tells if the columns is the first, the last or any one inside (null)
 *
 *	Example ;
-*		[clearing status=first path=http://lorempixel.com/400/200/sports/ caption=sport1 paththumb=http://lorempixel.com/30/30/sports/ ]
-*		[clearing  path=http://lorempixel.com/400/200/sports/ caption=sport1 paththumb=http://lorempixel.com/30/30/sports/ ]
-*		[clearing status=last path=http://lorempixel.com/400/200/sports/ caption=sport1 paththumb=http://lorempixel.com/30/30/sports/ ]
+*		[clearing status=first path=http://lorempixel.com/1400/800/sports/ caption=sport1 paththumb=http://lorempixel.com/150/150/sports/ ]
+*		[clearing  path=http://lorempixel.com/1400/800/sports/ caption=sport1 paththumb=http://lorempixel.com/150/150/sports/ ]
+*		[clearing status=last path=http://lorempixel.com/1400/800/sports/ caption=sport1 paththumb=http://lorempixel.com/150/150/sports/ ]
 *  default values 
 *       no deafult class
 */
@@ -426,8 +427,8 @@ function cornerstone_shortcode_clearing ($atts,$content) {
 	}
 	//Default value for params
 	$a = shortcode_atts( array(
-        'path' =>'lorempixel.com/400/200/sports/',
-        'paththumb'=>'lorempixel.com/30/30/sports/',
+        'path' =>'lorempixel.com/1400/800/sports/',
+        'paththumb'=>'lorempixel.com/150/150/sports/',
         'caption' => 'default text',
         'status'=>''
     ), $atts );
@@ -462,7 +463,7 @@ function cornerstone_add_buttons( $plugin_array ) {
     
 }
 function cornerstone_register_buttons( $buttons ) {
-    array_push( $buttons, 'cornerstone_column' , 'cornerstone_magellan'); 
+    array_push( $buttons, 'cornerstone_column' , 'cornerstone_magellan','cornerstone_clearing','cornerstone_loop','cornerstone_grid'); 
     return $buttons;
 }
 

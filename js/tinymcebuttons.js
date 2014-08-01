@@ -100,7 +100,116 @@
             }
 
         } );
+        editor.addButton( 'cornerstone_clearing', {
 
+            text: 'Clearing',
+            icon: false,
+            onclick: function() {
+                // Open window
+                editor.windowManager.open( {
+                    title: 'Clearing',
+                    body: [{
+                        type: 'listbox',
+                        name: 'format',
+                        label: 'Format de vignettes',
+                        'values': [
+                            {text: 'Trois vignettes', value: 'threethumbs'},
+                            {text: 'Quatre titres', value: 'fourthumbs'}
+                        ]
+                    }],
+                    onsubmit: function( e ) {
+                        switch(e.data.format ) {
+                            case 'threethumbs' :
+                                editor.insertContent( '[clearing status=first path=http://lorempixel.com/1400/800/sports/ caption=sport1 paththumb=http://lorempixel.com/150/150/sports/ ]');
+                                editor.insertContent( '[clearing  path=http://lorempixel.com/1400/800/sports/ caption=sport2 paththumb=http://lorempixel.com/150/150/sports/ ]<br/>');
+                                editor.insertContent( '[clearing status=last path=http://lorempixel.com/1400/800/sports/ caption=sport3 paththumb=http://lorempixel.com/150/150/sports/ ]');
+                                break;
+                            case 'fourthumbs' :
+                                editor.insertContent( '[clearing status=first path=http://lorempixel.com/400/200/sports/ caption=sport1 paththumb=http://lorempixel.com/150/150/sports/ ]');
+                                editor.insertContent( '[clearing  path=http://lorempixel.com/1400/800/sports/ caption=sport2 paththumb=http://lorempixel.com/150/150/sports/ ]<br/>');
+                                editor.insertContent( '[clearing  path=http://lorempixel.com/1400/800/sports/ caption=sport3 paththumb=http://lorempixel.com/150/150/sports/ ]<br/>');
+                                editor.insertContent( '[clearing status=last path=http://lorempixel.com/1400/800/sports/ caption=sport4 paththumb=http://lorempixel.com/150/150/sports/ ]');
+                                break;
+                            
+                            default :
+                                alert("Format non traité");
+                        }
+                        
+                    }
+
+                } );
+            }
+
+        } );    
+        editor.addButton( 'cornerstone_grid', {
+
+            text: 'Grid',
+            icon: false,
+            onclick: function() {
+                // Open window
+                editor.windowManager.open( {
+                    title: 'Grid',
+                    body: [{
+                        type: 'listbox',
+                        name: 'format',
+                        label: 'Format de grid',
+                        'values': [
+                            {text: 'Trois grid', value: 'threegrids'},
+                        ]
+                    }],
+                    onsubmit: function( e ) {
+                        switch(e.data.format ) {
+                            case 'threegrids' :
+                                editor.insertContent( '[grid status=first class="small-4"] The content of the first grid[/grid]');
+                                editor.insertContent( '[grid class="small-block-grid-2 medium-block-grid-3 large-block-grid-4"] The content of the second grid[/grid]<br/>');
+                                editor.insertContent( '[grid status=last class="small-4"] The content of the third grid[/grid]');
+                                break;
+                            default :
+                                alert("Format non traité");
+                        }
+                        
+                    }
+
+                } );
+            }
+
+        } );    
+        editor.addButton( 'cornerstone_loop', {
+
+            text: 'Boucle',
+            icon: false,
+            onclick: function() {
+                // Open window
+                editor.windowManager.open( {
+                    title: 'Boucle d\'extraits',
+                    body: [{
+                        type: 'listbox',
+                        name: 'format',
+                        label: 'Boucle',
+                        'values': [
+                            {text: 'Trois derniers posts', value: 'threetlastpost'},
+                            {text: 'Posts spécifiés', value: 'specifiedposts'}
+                        ]
+                    }],
+                    onsubmit: function( e ) {
+                        switch(e.data.format ) {
+                            case 'threetlastpost' :
+                                editor.insertContent( '[loop filter_by=post_type filter_value=post posts_per_page=3 orderby=date order=DESC class=small-block-grid-3]');
+                                break;
+                            case 'specifiedposts' :
+                                editor.insertContent( '[loop filter_by=post filter_value=16,18]');
+                                break;
+                            
+                            default :
+                                alert("Format non traité");
+                        }
+                        
+                    }
+
+                } );
+            }
+
+        } );  
 
 
 
