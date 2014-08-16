@@ -132,7 +132,13 @@ function cornerstone_shortcode_miniloop ($atts) {
 				<?php } ?>
 				<h2><a href="<?php the_permalink() ?>"><?php the_title();?></a></h2><?php edit_post_link('Edit','','<strong>|</strong>'); ?>  
 				<div class="cs_excerpt">
-				<?php strip_shortcodes(the_excerpt()); ?>
+				<?php
+				/*$exclude_codes = 'shortcode_to_keep_1|keep_this_shortcode|another_shortcode_to_keep';
+
+$the_content = get_the_content();
+$the_content= preg_replace("~(?:\[/?)(?!(?:$exclude_codes))[^/\]]+/?\]~s", '', $the_content);  # strip shortcodes, keep shortcode content*/
+					echo get_the_excerpt();
+				?>
 				</div></article></li>
 				<?php
 			endwhile;

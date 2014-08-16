@@ -19,6 +19,60 @@ add_theme_support('widget-customizer');
 show_admin_bar(FALSE);
 
 
+// This removes auto <p> on the content
+add_filter( 'the_excerpt', 'shortcode_unautop');
+add_filter( 'the_content', 'shortcode_unautop');
+
+
+
+
+/**
+*	Specific excerpt creation to resolve the strip of shortcodes in
+*	original excerpt function
+*
+*/
+function custom_wp_trim_excerpt($text) {
+$raw_excerpt = $text;
+if ( '' == $text ) {
+    $rawtext = get_the_content('');
+ 
+	$textstructure = preg_split('/<span id="more-[0-9]*"><\/span>/',$rawtext);
+	//$textstructure = preg_split('/span/',$rawtext);
+	$text = $textstructure[0];
+    //$text = strip_shortcodes( $text );
+ 
+    $text = apply_filters('the_content', $text);
+    $text = str_replace(']]>', ']]&gt;', $text);
+     
+    /***Add the allowed HTML tags separated by a comma.***/
+    $allowed_tags = '<a>,<em>,<strong>'; 
+    $text = strip_tags($text, $allowed_tags);
+     
+    /***Change the excerpt word count.***/
+    $excerpt_word_count = 60;
+    $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count);
+     
+    /*** Change the excerpt ending.***/
+    $excerpt_end = ' <a href="'. get_permalink($post->ID) . '">' . '[&hellip;]</a>';
+    $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end);
+     
+    $words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
+    if ( count($words) > $excerpt_length ) {
+        array_pop($words);
+        $text = implode(' ', $words);
+        $text = $text . $excerpt_more;
+    } else {
+        $text = implode(' ', $words);
+    }
+}
+return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
+}
+remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+add_filter('get_the_excerpt', 'custom_wp_trim_excerpt');
+
+
+
+
 // Shortcodes
 include('inc/shortcodes.php');
 
