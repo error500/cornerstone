@@ -61,10 +61,10 @@ add_shortcode( 'video', 'cornerstone_display_video' );
 */
 function cornerstone_shortcode_miniloop ($atts) {
 	global $cornerstone_displaying_loop ;
-
+	$content ="";
 	if (!isset($cornerstone_displaying_loop)) {
 		$cornerstone_displaying_loop = true;
-
+		ob_start();
 		//Default value for params
 		$a = shortcode_atts( array(
 	        'filter_by' => 'post_type',
@@ -106,7 +106,6 @@ function cornerstone_shortcode_miniloop ($atts) {
 			
 		}
 		
-		ob_start();		
 		if (isset($shortcode_msg )) {
 			// Error display
 			?> <div data-alert class="alert-box alert round">
@@ -118,11 +117,8 @@ function cornerstone_shortcode_miniloop ($atts) {
 		} else {
 
 			$loop = new WP_Query( $query );
-			?>
-			<section class="cs_section"><ul class="<?php echo $class; ?>">
+			?><section class="cs_section"><ul class="<?php echo $class; ?>">
 			<?php
-
-
 			while ( $loop->have_posts() ) : $loop->the_post();
 				?><li><article class="cs_article">
 				<?php if ( has_post_thumbnail() ) {?>
@@ -132,24 +128,16 @@ function cornerstone_shortcode_miniloop ($atts) {
 				<?php } ?>
 				<h2><a href="<?php the_permalink() ?>"><?php the_title();?></a></h2><?php edit_post_link('Edit','','<strong>|</strong>'); ?>  
 				<div class="cs_excerpt">
-				<?php
-				/*$exclude_codes = 'shortcode_to_keep_1|keep_this_shortcode|another_shortcode_to_keep';
-
-$the_content = get_the_content();
-$the_content= preg_replace("~(?:\[/?)(?!(?:$exclude_codes))[^/\]]+/?\]~s", '', $the_content);  # strip shortcodes, keep shortcode content*/
-					echo get_the_excerpt();
-				?>
+				<?php echo get_the_excerpt();?>
 				</div></article></li>
-				<?php
-			endwhile;
+			<?php endwhile;
 			?></ul></section>
 			<?php
-			wp_reset_postdata();
-
-			}
 		}
-	$content = ob_get_contents();
-	ob_end_clean();
+		$content = ob_get_contents();
+	}
+	
+	$cornerstone_displaying_loop = false;
 	return $content;
 }
 

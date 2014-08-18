@@ -70,6 +70,10 @@ return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
 remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter('get_the_excerpt', 'custom_wp_trim_excerpt');
 
+function custom_excerpt_more($more)  { 
+   return  ' &hellip;<br />' . '<a href="'. get_permalink($post->ID) . '">' . 'Continue Reading: '. get_the_title() . '</a>'; 
+}  
+add_filter('excerpt_more', 'custom_excerpt_more');  
 
 
 
