@@ -62,7 +62,8 @@ add_shortcode( 'video', 'cornerstone_display_video' );
 function cornerstone_shortcode_miniloop ($atts) {
 	global $cornerstone_displaying_loop ;
 	$content ="";
-	if (!isset($cornerstone_displaying_loop)) {
+	if (!isset($cornerstone_displaying_loop) 
+		|| !$cornerstone_displaying_loop) {
 		$cornerstone_displaying_loop = true;
 		ob_start();
 		//Default value for params
@@ -135,6 +136,7 @@ function cornerstone_shortcode_miniloop ($atts) {
 			<?php
 		}
 		$content = ob_get_contents();
+		ob_get_clean();
 	}
 	
 	$cornerstone_displaying_loop = false;
