@@ -137,6 +137,7 @@ function cornerstone_shortcode_miniloop ($atts) {
 		}
 		$content = ob_get_contents();
 		ob_get_clean();
+		wp_reset_query(); 
 	}
 	
 	$cornerstone_displaying_loop = false;
