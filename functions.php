@@ -20,8 +20,8 @@ show_admin_bar(FALSE);
 
 
 // This removes auto <p> on the content
-add_filter( 'the_excerpt', 'shortcode_unautop');
-add_filter( 'the_content', 'shortcode_unautop');
+//add_filter( 'the_excerpt', 'shortcode_unautop');
+//add_filter( 'the_content', 'shortcode_unautop');
 
 
 

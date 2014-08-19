@@ -1,6 +1,10 @@
 <?php
 
 // Shortcodes
+/**
+*	Deprecated : see cornerstone_shortcode_columns and cornerstone_shortcode_grid
+*
+*/
 function cornerstone_shortcode_col2($atts, $content=null){
 
 return '<div class="small-12 large-6 columns"><p>' . strip_shortcodes($content) . '</p></div>';
@@ -44,6 +48,7 @@ add_shortcode( 'video', 'cornerstone_display_video' );
 *		orderby : the item for ordering
 *		order : the choosed order
 *	Foundation params:
+*		grid_mode : grid or grid-block (default)
 *		class : ul class for displaying
 *
 *	Example ;
@@ -57,6 +62,7 @@ add_shortcode( 'video', 'cornerstone_display_video' );
 *		'filter_value' => 'post',
 *		'posts_per_page' =>'3',
 *		'orderby' => 'date', 'order' => 'DESC',
+*		'grid_mode' => 'grid-block'
 *		'class' => 'small-block-grid-1,medium-block-grid-3'
 */
 function cornerstone_shortcode_miniloop ($atts) {
@@ -73,7 +79,9 @@ function cornerstone_shortcode_miniloop ($atts) {
 	        'post__in' => null,
 	        'posts_per_page' =>'3',
 	        'orderby' => 'date', 'order' => 'DESC',
+	        'grid_mode' => 'grid-block',
 	        'class' => 'small-block-grid-1,medium-block-grid-3'
+	        
 	    ), $atts );
 		extract($a);
 		$query = array();
@@ -104,7 +112,26 @@ function cornerstone_shortcode_miniloop ($atts) {
 			} else {
 				$shortcode_msg[] = 'Le champ class n\'est pas défini correctement : il doit correspondre à une succession de classes séparées par des virgules : 15,8,9';
 			}
-			
+		}
+		if (isset($a['grid_mode'])) {
+			switch ($a['grid_mode']) {
+				case 'grid':
+					$containerOpen ='<div class="row">';
+					$contentOpen ='<div class="'.$class.'">';
+					$contentClose ='</div>';
+					$containerClose ='</div>';
+
+					break;
+				case 'grid-block':
+					$containerOpen ='<ul class="'.$class.'">';
+					$contentOpen ='<li>';
+					$contentClose ='</li>';
+					$containerClose ='</ul>';
+					break;				
+				default:
+					$shortcode_msg[] = 'Le grid_mode est incorrect : sélectionnez grid ou grid-block';
+					break;
+			}
 		}
 		
 		if (isset($shortcode_msg )) {
@@ -112,16 +139,17 @@ function cornerstone_shortcode_miniloop ($atts) {
 			?> <div data-alert class="alert-box alert round">
 			<?php foreach($shortcode_msg as $single_msg ) { ?>
 				<p><?php echo $single_msg; ?></p>
-
 			<?php }
 			?> </div><?php
 		} else {
 
 			$loop = new WP_Query( $query );
-			?><section class="cs_section"><ul class="<?php echo $class; ?>">
+			?><section class="cs_section">
 			<?php
+			echo $containerOpen;
 			while ( $loop->have_posts() ) : $loop->the_post();
-				?><li><article class="cs_article">
+				echo $contentOpen;
+				?><article class="cs_article">
 				<?php if ( has_post_thumbnail() ) {?>
 					<header><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
 					<?php the_post_thumbnail('large'); ?>
@@ -129,10 +157,13 @@ function cornerstone_shortcode_miniloop ($atts) {
 				<?php } ?>
 				<h2><a href="<?php the_permalink() ?>"><?php the_title();?></a></h2><?php edit_post_link('Edit','','<strong>|</strong>'); ?>  
 				<div class="cs_excerpt">
-				<?php echo get_the_excerpt();?>
-				</div></article></li>
-			<?php endwhile;
-			?></ul></section>
+				<?php echo "<p>".get_the_excerpt()."</p>";?>
+				</div></article>
+			<?php
+			echo $contentClose;
+			 endwhile;
+			echo $containerClose;
+			?></section>
 			<?php
 		}
 		$content = ob_get_contents();
