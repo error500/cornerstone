@@ -21,7 +21,7 @@ show_admin_bar(FALSE);
 
 // This removes auto <p> on the content
 //add_filter( 'the_excerpt', 'shortcode_unautop');
-//add_filter( 'the_content', 'shortcode_unautop');
+add_filter( 'the_content', 'shortcode_unautop');
 
 
 
@@ -34,18 +34,17 @@ show_admin_bar(FALSE);
 function custom_wp_trim_excerpt($text) {
 $raw_excerpt = $text;
 if ( '' == $text ) {
-    $rawtext = get_the_content('');
+    $rawtext = '<p>'.get_the_content('').'</p>';
  
 	$textstructure = preg_split('/<span id="more-[0-9]*"><\/span>/',$rawtext);
-	//$textstructure = preg_split('/span/',$rawtext);
 	$text = $textstructure[0];
     //$text = strip_shortcodes( $text );
  
     $text = apply_filters('the_content', $text);
     $text = str_replace(']]>', ']]&gt;', $text);
      
-    /***Add the allowed HTML tags separated by a comma.***/
-    $allowed_tags = '<a>,<em>,<strong>'; 
+    /***Add the allowed HTML tags .***/
+    $allowed_tags = '<p><a><em><strong><ul><li>'; 
     $text = strip_tags($text, $allowed_tags);
      
     /***Change the excerpt word count.***/
@@ -71,7 +70,7 @@ remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter('get_the_excerpt', 'custom_wp_trim_excerpt');
 
 function custom_excerpt_more($more)  { 
-   return  ' &hellip;<br />' . '<a href="'. get_permalink($post->ID) . '">' . 'Continue Reading: '. get_the_title() . '</a>'; 
+   return  '&nbsp;<a href="'. get_permalink($post->ID) . '">' . '[&hellip;]</a>'; 
 }  
 add_filter('excerpt_more', 'custom_excerpt_more');  
 

@@ -286,7 +286,7 @@ function cornerstone_shortcode_columns ($atts,$content) {
 	//HTML rendering on last tab only
 	ob_start();		
 	echo ($status=='first')? ' <div class="row"> ' : '' ;
-	echo '<div class="'.$class.' columns">'.do_shortcode($content).'</div>' ;
+	echo '<div class="'.$class.' columns"><p>'.do_shortcode($content).'</p></div>' ;
 	echo ($status=='last')? ' </div> ' : '' ;
 		
 	$render = ob_get_contents();
