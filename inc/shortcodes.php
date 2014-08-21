@@ -151,11 +151,15 @@ function cornerstone_shortcode_miniloop ($atts) {
 				echo $contentOpen;
 				?><article class="cs_article">
 				<?php if ( has_post_thumbnail() ) {?>
-					<header><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
+					<header class="cs_header illustrated"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
 					<?php the_post_thumbnail('large'); ?>
-					</a></header>
+					</a>
+				<?php
+				} else {
+				?>
+				<header class="cs_header">
 				<?php } ?>
-				<h2><a href="<?php the_permalink() ?>"><?php the_title();?></a></h2><?php edit_post_link('Edit','','<strong>|</strong>'); ?>  
+				<h2><a href="<?php the_permalink() ?>"><?php the_title();?></a></h2><?php edit_post_link('Edit','','<strong>|</strong>'); ?></header>  
 				<div class="cs_excerpt">
 				<?php echo "<p>".get_the_excerpt()."</p>";?>
 				</div></article>
