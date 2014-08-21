@@ -149,20 +149,15 @@ function cornerstone_shortcode_miniloop ($atts) {
 			echo $containerOpen;
 			while ( $loop->have_posts() ) : $loop->the_post();
 				echo $contentOpen;
-				?><article class="cs_article">
+				?><article class="cs_article"><header>
 				<?php if ( has_post_thumbnail() ) {?>
-					<header class="cs_header illustrated"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
-					<?php the_post_thumbnail('large'); ?>
-					</a>
-				<?php
-				} else {
-				?>
-				<header class="cs_header">
+					<div class="cs_illustration"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
+					<?php the_post_thumbnail('large'); ?></a></div>
 				<?php } ?>
 				<h2><a href="<?php the_permalink() ?>"><?php the_title();?></a></h2><?php edit_post_link('Edit','','<strong>|</strong>'); ?></header>  
-				<div class="cs_excerpt">
+				<section class="cs_excerpt">
 				<?php echo "<p>".get_the_excerpt()."</p>";?>
-				</div></article>
+				</section></article>
 			<?php
 			echo $contentClose;
 			 endwhile;
