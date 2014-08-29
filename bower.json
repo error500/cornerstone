@@ -1,8 +1,9 @@
 {
-	"name": "error500-cornerstone",
-	"version": "0.0.1",
-	"private": "true",
-	"dependencies": {
-		"foundation": "zurb/bower-foundation"
-	}
+  "name": "error500-cornerstone",
+  "version": "0.0.1",
+  "private": "true",
+  "dependencies": {
+    "foundation": "zurb/bower-foundation",
+    "owl.carousel": "*"
+  }
 }

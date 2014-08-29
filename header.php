@@ -62,4 +62,4 @@
   </section>
 </nav>
 
-<?php get_template_part( 'orbit', get_post_format() ); ?>
+<?php get_template_part( 'owl', get_post_format() ); ?>

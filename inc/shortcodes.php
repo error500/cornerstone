@@ -16,6 +16,7 @@ add_shortcode( 'col2', 'cornerstone_shortcode_col2' );
 
 // Shortcodes
 function cornerstone_display_video($atts){
+	$retval ="";	
 	extract( shortcode_atts( array(
 		'code' => 'undefined',
 		'type' => 'youtube',

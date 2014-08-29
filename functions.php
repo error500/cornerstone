@@ -32,46 +32,50 @@ add_filter( 'the_content', 'shortcode_unautop');
 *
 */
 function custom_wp_trim_excerpt($text) {
-$raw_excerpt = $text;
-if ( '' == $text ) {
-    $rawtext = '<p>'.get_the_content('').'</p>';
- 
-	$textstructure = preg_split('/<span id="more-[0-9]*"><\/span>/',$rawtext);
-	$text = $textstructure[0];
-    //$text = strip_shortcodes( $text );
- 
-    $text = apply_filters('the_content', $text);
-    $text = str_replace(']]>', ']]&gt;', $text);
-     
-    /***Add the allowed HTML tags .***/
-    $allowed_tags = '<p><a><em><strong><ul><li>'; 
-    $text = strip_tags($text, $allowed_tags);
-     
-    /***Change the excerpt word count.***/
-    $excerpt_word_count = 60;
-    $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count);
-     
-    /*** Change the excerpt ending.***/
-    $excerpt_end = ' <a href="'. get_permalink($post->ID) . '">' . '[&hellip;]</a>';
-    $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end);
-     
-    $words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
-    if ( count($words) > $excerpt_length ) {
-        array_pop($words);
-        $text = implode(' ', $words);
-        $text = $text . $excerpt_more;
-    } else {
-        $text = implode(' ', $words);
-    }
+	global $post;	
+	$raw_excerpt = $text;
+	if ( '' == $text ) {
+	    $rawtext = '<p>'.get_the_content('').'</p>';
+	 
+		$textstructure = preg_split('/<span id="more-[0-9]*"><\/span>/',$rawtext);
+		$text = $textstructure[0];
+	    //$text = strip_shortcodes( $text );
+	 
+	    $text = apply_filters('the_content', $text);
+	    $text = str_replace(']]>', ']]&gt;', $text);
+	     
+	    /***Add the allowed HTML tags .***/
+	    $allowed_tags = '<p><a><em><strong><ul><li>'; 
+	    $text = strip_tags($text, $allowed_tags);
+	     
+	    /***Change the excerpt word count.***/
+	    $excerpt_word_count = 60;
+	    $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count);
+	     
+	    /*** Change the excerpt ending.***/
+	    $excerpt_end = ' <a href="'. get_permalink($post->ID) . '">' . '[&hellip;]</a>';
+	    $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end);
+	     
+	    $words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
+	    if ( count($words) > $excerpt_length ) {
+	        array_pop($words);
+	        $text = implode(' ', $words);
+	        $text = $text . $excerpt_more;
+	    } else {
+	        $text = implode(' ', $words);
+	    }
+	}
+	return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
 }
-return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
-}
+
 remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter('get_the_excerpt', 'custom_wp_trim_excerpt');
 
 function custom_excerpt_more($more)  { 
-   return  '&nbsp;<a href="'. get_permalink($post->ID) . '">' . '[&hellip;]</a>'; 
+	global $post;	
+	return  '&nbsp;<a href="'. get_permalink($post->ID) . '">' . '[&hellip;]</a>'; 
 }  
+
 add_filter('excerpt_more', 'custom_excerpt_more');  
 
 
@@ -107,13 +111,19 @@ if ( ! function_exists( 'load_cornerstone_scripts' ) ) {
 		);
 
 		wp_enqueue_script(
+			'owl.carousel_js',
+			get_template_directory_uri() . '/libs/owl.carousel/dist/owl.carousel.min.js',
+			array('jquery'),
+			'2.0',
+			true
+		);
+		wp_enqueue_script(
 			'foundation_init_js',
 			get_template_directory_uri() . '/js/foundation_init.js',
 			array('foundation_js'),
 			'1.0',
 			true
 		);
-
 	}
 
 }
