@@ -143,13 +143,14 @@ if ( ! function_exists( 'foundation_page_menu_class' ) ) {
 add_filter('wp_page_menu','foundation_page_menu_class');
 
 
-// Orbit, for WordPress
-add_action('init', 'Orbit');
-if ( ! function_exists( 'Orbit' ) ) {
-	function Orbit() {
-		$Orbit_args = array(
-			'label'	=> __('Orbit Slider'),
-			'singular_label' =>	__('Orbit'),
+// Slider, for WordPress
+// Previously was Orbit
+add_action('init', 'Slider');
+if ( ! function_exists( 'Slider' ) ) {
+	function Slider() {
+		$Slider_args = array(
+			'label'	=> __('Slider (owl)'),
+			'singular_label' =>	__('Slider'),
 			'public'	=>	true,
 			'show_ui'	=>	true,
 			'capability_type'	=>	'post',
@@ -158,44 +159,44 @@ if ( ! function_exists( 'Orbit' ) ) {
 			'supports'	=>	array('title', 'editor','page-attributes','thumbnail','custom-fields'),
 			'taxonomies' => array('category','post_tag')
 			);
-			register_post_type('Orbit', $Orbit_args);
+			register_post_type('Slider', $Slider_args);
 	}
 }
 
-add_action( 'add_meta_boxes', 'orbit_meta_box_add' );
-if ( ! function_exists( 'orbit_meta_box_add' ) ) {
-	function orbit_meta_box_add() {
-		add_meta_box( 'orbit-meta-box-id', 'Additional Orbit slider options', 'orbit_meta_box', 'Orbit', 'normal', 'high' );
+add_action( 'add_meta_boxes', 'slider_meta_box_add' );
+if ( ! function_exists( 'slider_meta_box_add' ) ) {
+	function slider_meta_box_add() {
+		add_meta_box( 'slider-meta-box-id', 'Additional slider slider options', 'slider_meta_box', 'slider', 'normal', 'high' );
 	}
 }
 
-if ( ! function_exists( 'orbit_meta_box' ) ) {
-	function orbit_meta_box( $post ) {
+if ( ! function_exists( 'slider_meta_box' ) ) {
+	function slider_meta_box( $post ) {
 		$values = get_post_custom( $post->ID );
-		$caption = isset( $values['_orbit_meta_box_caption_text'] ) ? esc_attr( $values['_orbit_meta_box_caption_text'][0] ) : '';
-		$link = isset( $values['_orbit_meta_box_link_text'] ) ? esc_attr( $values['_orbit_meta_box_link_text'][0] ) : '';
-		wp_nonce_field( 'orbit_meta_box_nonce', 'meta_box_nonce' );
+		$caption = isset( $values['_slider_meta_box_caption_text'] ) ? esc_attr( $values['_slider_meta_box_caption_text'][0] ) : '';
+		$link = isset( $values['_slider_meta_box_link_text'] ) ? esc_attr( $values['_slider_meta_box_link_text'][0] ) : '';
+		wp_nonce_field( 'slider_meta_box_nonce', 'meta_box_nonce' );
 		?>
 		<p>
-			<label for="_orbit_meta_box_caption_text">Caption</label>
-			<textarea id="orbit_meta_box_caption_text" class="widefat" name="_orbit_meta_box_caption_text"><?php echo esc_attr( $caption ); ?></textarea>
+			<label for="_slider_meta_box_caption_text">Caption</label>
+			<textarea id="slider_meta_box_caption_text" class="widefat" name="_slider_meta_box_caption_text"><?php echo esc_attr( $caption ); ?></textarea>
 		</p>
 		<p>
-			<label for="_orbit_meta_box_link_text">Link</label>
-			<input type="text" id="orbit_meta_box_link_text" class="widefat" name="_orbit_meta_box_link_text" value="<?php echo $link; ?>" />
+			<label for="_slider_meta_box_link_text">Link</label>
+			<input type="text" id="slider_meta_box_link_text" class="widefat" name="_slider_meta_box_link_text" value="<?php echo $link; ?>" />
 		</p>
 		<?php
 	}
 }
 
-add_action( 'save_post', 'orbit_meta_box_save' );
-if ( ! function_exists( 'orbit_meta_box_save' ) ) {
-	function orbit_meta_box_save( $post_id ) {
+add_action( 'save_post', 'slider_meta_box_save' );
+if ( ! function_exists( 'slider_meta_box_save' ) ) {
+	function slider_meta_box_save( $post_id ) {
 		// Bail if we're doing an auto save
 		if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
 		
 		// if our nonce isn't there, or we can't verify it, bail
-		if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'orbit_meta_box_nonce' ) ) return;
+		if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'slider_meta_box_nonce' ) ) return;
 		
 		// if our current user can't edit this post, bail
 		if( !current_user_can( 'edit_post' ) ) return;
@@ -208,10 +209,10 @@ if ( ! function_exists( 'orbit_meta_box_save' ) ) {
 		);
 		
 		// Probably a good idea to make sure your data is set
-		if( isset( $_POST['_orbit_meta_box_caption_text'] ) )
-			update_post_meta( $post_id, '_orbit_meta_box_caption_text', wp_kses( $_POST['_orbit_meta_box_caption_text'], $allowed ) );
-		if( isset( $_POST['_orbit_meta_box_link_text'] ) )
-			update_post_meta( $post_id, '_orbit_meta_box_link_text', wp_kses( $_POST['_orbit_meta_box_link_text'], $allowed ) );
+		if( isset( $_POST['_slider_meta_box_caption_text'] ) )
+			update_post_meta( $post_id, '_slider_meta_box_caption_text', wp_kses( $_POST['_slider_meta_box_caption_text'], $allowed ) );
+		if( isset( $_POST['_slider_meta_box_link_text'] ) )
+			update_post_meta( $post_id, '_slider_meta_box_link_text', wp_kses( $_POST['_slider_meta_box_link_text'], $allowed ) );
 	}
 }
 
@@ -222,7 +223,7 @@ Reduces errors on child themes not yet updated.
 To be depreciated in a future version */
 if ( ! function_exists( 'SliderContent' ) ) {
 	function SliderContent() {
-		OrbitSlider();
+		SliderSlider();
 	}
 }
 

@@ -31,7 +31,7 @@
 			}
 			add_action( 'wp_footer', 'cornerstone_owl_init', 9997 );
 			
-			$args = array( 'post_type' => 'Orbit');
+			$args = array( 'post_type' => 'Slider');
 			$loop = new WP_Query( $args );
 			echo '<div class="owl-carousel">';
 		
