@@ -1,4 +1,13 @@
+<?php
 
+/**
+*	Displays as a slider, all posts from Slider type
+*	=> When Slider post has a thumb : diplays the thum
+*	=> When only Title & Content : The text.
+*
+*/
+
+?>
 <div class="row">
 	<div id="primary" class="site-content small-12 columns small-centered">
 		<div id="content" role="main">
@@ -8,7 +17,7 @@
 			 function cornerstone_owl_init() { ?>
 			 	<script type="text/javascript">
 				jQuery('.owl-carousel').owlCarousel({
-					    loop:true,
+					    sliderloop:true,
 					    margin:10,
 					    nav:false,
 					    autoplay:true,
@@ -31,14 +40,11 @@
 			}
 			add_action( 'wp_footer', 'cornerstone_owl_init', 9997 );
 			
-			$args = array( 'post_type' => 'Slider');
-			$loop = new WP_Query( $args );
-			echo '<div class="owl-carousel">';
-		
-			while ( $loop->have_posts() ) : $loop->the_post();
-
+			$sliderargs = array('post_type' => 'Slider','nopaging'=>'true');
+			$sliderloop = new WP_Query( $sliderargs );
+			echo "<div class='owl-carousel'>";
+			while ( $sliderloop->have_posts() ) : $sliderloop->the_post();
 				if(has_post_thumbnail()) {
-
 					if($owlsize != '') {
 						$owlimagethumbnail = wp_get_attachment_image_src( get_post_thumbnail_id(), $owlsize);
 						$owlimage = $owlimagethumbnail['0'];
@@ -66,11 +72,10 @@
 
 				}
 			endwhile;
-
-			echo '</div>';
+			wp_reset_postdata();
+			echo "</div>";
 
 			 ?>
 		</div>
 	</div>
 </div>
-
