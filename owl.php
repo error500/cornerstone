@@ -21,6 +21,7 @@
 					    margin:10,
 					    nav:false,
 					    autoplay:true,
+					    loop:true,
 						autoplayTimeout:5000,
 					    responsive:{
 					        0:{
