@@ -150,7 +150,7 @@ function cornerstone_shortcode_miniloop ($atts) {
 			echo $containerOpen;
 			while ( $loop->have_posts() ) : $loop->the_post();
 				echo $contentOpen;
-				?><article class="cs_article"><header>
+				?><article  class="<?php implode(' ',get_post_class('cs_article', the_ID())) ?>" ><header>
 				<?php 
 				$hasthumbnailclass ="";
 				// If has a thumbnail then display it
