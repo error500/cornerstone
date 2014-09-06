@@ -189,7 +189,8 @@
                         'values': [
                             {text: 'Trois derniers posts', value: 'threetlastpost'},
                             {text: 'Posts spécifiés', value: 'specifiedposts'},
-                            {text: 'Le dernier posts centré', value: 'centeredlastpost'}
+                            {text: 'Le dernier posts centré', value: 'centeredlastpost'},
+                            {text: 'Le dernier posts centré et template dédié', value: 'centeredlastpostspecifiedtemplate'}
                         ]
                     }],
                     onsubmit: function( e ) {
@@ -203,6 +204,9 @@
                             case 'centeredlastpost' :
                                 editor.insertContent( '[loop filter_by=post_type filter_value=post posts_per_page=1 orderby=date order=DESC grid_mode=grid class=small-12,medium-6,medium-centered,columns]');
                                 break;
+                            case 'centeredlastpostspecifiedtemplate' :
+                                editor.insertContent( '[loop filter_by=post_type filter_value=post posts_per_page=1 orderby=date order=DESC grid_mode=grid class=small-12,medium-6,medium-centered,columns template=mytemp]');
+                                break;                                
                             default :
                                 alert("Format non traité");
                         }
