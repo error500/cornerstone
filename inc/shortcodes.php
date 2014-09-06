@@ -48,6 +48,7 @@ add_shortcode( 'video', 'cornerstone_display_video' );
 *		posts_per_page : the nomber of items to load
 *		orderby : the item for ordering
 *		order : the choosed order
+*		template : name of the template for the displayed article
 *	Foundation params:
 *		grid_mode : grid or grid-block (default)
 *		class : ul class for displaying
@@ -65,6 +66,7 @@ add_shortcode( 'video', 'cornerstone_display_video' );
 *		'orderby' => 'date', 'order' => 'DESC',
 *		'grid_mode' => 'grid-block'
 *		'class' => 'small-block-grid-1,medium-block-grid-3'
+*		'template' => ''
 */
 function cornerstone_shortcode_miniloop ($atts) {
 	global $cornerstone_displaying_loop ;
@@ -81,7 +83,8 @@ function cornerstone_shortcode_miniloop ($atts) {
 	        'posts_per_page' =>'3',
 	        'orderby' => 'date', 'order' => 'DESC',
 	        'grid_mode' => 'grid-block',
-	        'class' => 'small-block-grid-1,medium-block-grid-3'
+	        'class' => 'small-block-grid-1,medium-block-grid-3',
+	        'template' =>''
 	        
 	    ), $atts );
 		extract($a);
@@ -114,6 +117,7 @@ function cornerstone_shortcode_miniloop ($atts) {
 				$shortcode_msg[] = 'Le champ class n\'est pas défini correctement : il doit correspondre à une succession de classes séparées par des virgules : 15,8,9';
 			}
 		}
+		// prepare classes to work in grid mode or in row /colmumns mode
 		if (isset($a['grid_mode'])) {
 			switch ($a['grid_mode']) {
 				case 'grid':
@@ -134,7 +138,7 @@ function cornerstone_shortcode_miniloop ($atts) {
 					break;
 			}
 		}
-		
+		//echoing errors if needed
 		if (isset($shortcode_msg )) {
 			// Error display
 			?> <div data-alert class="alert-box alert round">
@@ -143,28 +147,36 @@ function cornerstone_shortcode_miniloop ($atts) {
 			<?php }
 			?> </div><?php
 		} else {
-
+			// Starts the query and displaying
 			$loop = new WP_Query( $query );
 			?><section class="cs_section">
 			<?php
 			echo $containerOpen;
 			while ( $loop->have_posts() ) : $loop->the_post();
 				echo $contentOpen;
-				?><article  class="<?php implode(' ',get_post_class('cs_article', the_ID())) ?>" ><header>
-				<?php 
-				$hasthumbnailclass ="";
-				// If has a thumbnail then display it
-				if ( has_post_thumbnail() ) {
-					$hasthumbnailclass ="hasthumbnail";
+				// in template mode null
+				if ($a['template']=="") {
+					// Standard output
 					?>
-					<div class="cs_illustration"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
-					<?php the_post_thumbnail('large'); ?></a></div>
-				<?php } ?>
-				<h2 class="cs_title <?php echo $hasthumbnailclass; ?>"><a href="<?php the_permalink() ?>"><?php the_title();?></a></h2><?php edit_post_link('Edit','','<strong>|</strong>'); ?></header>  
-				<section class="cs_excerpt">
-				<?php echo "<p>".get_the_excerpt()."</p>";?>
-				</section></article>
-			<?php
+					<article  class="<?php echo implode(' ',get_post_class('cs_article', the_ID())) ?>" ><header>
+					<?php 
+					$hasthumbnailclass ="";
+					// If has a thumbnail then display it
+					if ( has_post_thumbnail() ) {
+						$hasthumbnailclass ="hasthumbnail";
+						?>
+						<div class="cs_illustration"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
+						<?php the_post_thumbnail('large'); ?></a></div>
+					<?php } ?>
+					<h2 class="cs_title <?php echo $hasthumbnailclass; ?>"><a href="<?php the_permalink() ?>"><?php the_title();?></a></h2><?php edit_post_link('Edit','','<strong>|</strong>'); ?></header>  
+					<section class="cs_excerpt">
+					<?php echo "<p>".get_the_excerpt()."</p>";?>
+					</section></article>
+					<?php
+				} else {
+					// Template mode
+					get_template_part( 'loop-content', $a['template'] );
+				}
 			echo $contentClose;
 			 endwhile;
 			echo $containerClose;
