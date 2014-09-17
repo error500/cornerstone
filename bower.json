@@ -4,6 +4,7 @@
   "private": "true",
   "dependencies": {
     "foundation": "zurb/bower-foundation",
-    "owl.carousel": "*"
+    "owl.carousel": "*",
+    "gmap3": "https://github.com/jbdemonte/gmap3.git#~6.0.0"
   }
 }
