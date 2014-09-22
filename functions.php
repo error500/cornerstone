@@ -109,14 +109,14 @@ if ( ! function_exists( 'load_cornerstone_scripts' ) ) {
 			'5.3.0',
 			true
 		);
-
-		wp_enqueue_script(
+		// Load of owl migrated to child
+		/*wp_enqueue_script(
 			'owl.carousel_js',
 			get_template_directory_uri() . '/libs/owl.carousel/dist/owl.carousel.min.js',
 			array('jquery'),
 			'2.0',
 			true
-		);
+		);*/
 		wp_enqueue_script(
 			'foundation_init_js',
 			get_template_directory_uri() . '/js/foundation_init.js',
@@ -125,7 +125,6 @@ if ( ! function_exists( 'load_cornerstone_scripts' ) ) {
 			true
 		);
 	}
-
 }
 
 
