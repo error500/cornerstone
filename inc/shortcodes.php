@@ -52,6 +52,8 @@ add_shortcode( 'video', 'cornerstone_display_video' );
 *	Foundation params:
 *		grid_mode : grid or grid-block (default)
 *		class : ul class for displaying
+*	Shortcode option :
+*		enclosing text : text to display before the loop
 *
 *	Example ;
 *		3 last post	
@@ -68,9 +70,10 @@ add_shortcode( 'video', 'cornerstone_display_video' );
 *		'class' => 'small-block-grid-1,medium-block-grid-3'
 *		'template' => ''
 */
-function cornerstone_shortcode_miniloop ($atts) {
+function cornerstone_shortcode_miniloop ($atts,$enclosing_text) {
 	global $cornerstone_displaying_loop ;
 	$content ="";
+
 	if (!isset($cornerstone_displaying_loop) 
 		|| !$cornerstone_displaying_loop) {
 		$cornerstone_displaying_loop = true;
@@ -84,11 +87,13 @@ function cornerstone_shortcode_miniloop ($atts) {
 	        'orderby' => 'date', 'order' => 'DESC',
 	        'grid_mode' => 'grid-block',
 	        'class' => 'small-block-grid-1,medium-block-grid-3',
-	        'template' =>''
+	        'template' =>'',
+	        'display_category_name' =>'false'
 	        
 	    ), $atts );
 		extract($a);
 		$query = array();
+		//load params if sended by shortcode attributes
 		if (isset($a['filter_by']) && isset($a['filter_value'])) {
 			$query[$a['filter_by']]=$a['filter_value'];
 		}
@@ -117,7 +122,9 @@ function cornerstone_shortcode_miniloop ($atts) {
 				$shortcode_msg[] = 'Le champ class n\'est pas défini correctement : il doit correspondre à une succession de classes séparées par des virgules : 15,8,9';
 			}
 		}
-		// prepare classes to work in grid mode or in row /colmumns mode
+
+		// prepare classes to work in grid mode or in row /columns mode
+		// and build then $container variables
 		if (isset($a['grid_mode'])) {
 			switch ($a['grid_mode']) {
 				case 'grid':
@@ -125,7 +132,6 @@ function cornerstone_shortcode_miniloop ($atts) {
 					$contentOpen ='<div class="'.$class.'">';
 					$contentClose ='</div>';
 					$containerClose ='</div>';
-
 					break;
 				case 'grid-block':
 					$containerOpen ='<ul class="'.$class.'">';
@@ -151,6 +157,11 @@ function cornerstone_shortcode_miniloop ($atts) {
 			$loop = new WP_Query( $query );
 			?><section class="cs_section">
 			<?php
+			// echoing content if needed
+			if ($enclosing_text) {
+				echo '<p class="content">'.$enclosing_text.'</p>';
+			} 
+
 			echo $containerOpen;
 			while ( $loop->have_posts() ) : $loop->the_post();
 				echo $contentOpen;
