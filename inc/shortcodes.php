@@ -63,6 +63,7 @@ add_shortcode( 'video', 'cornerstone_display_video' );
 *
 *  default values 
 *		'filter_by' => 'post_type',
+*       'post_status'=>'publish',
 *		'filter_value' => 'post',
 *		'posts_per_page' =>'3',
 *		'orderby' => 'date', 'order' => 'DESC',
@@ -83,8 +84,10 @@ function cornerstone_shortcode_miniloop ($atts,$enclosing_text) {
 	        'filter_by' => 'post_type',
 	        'filter_value' => 'post',
 	        'post__in' => null,
+	        'post_status'=>'publish',
 	        'posts_per_page' =>'3',
 	        'orderby' => 'date', 'order' => 'DESC',
+	        'meta_key' => '',
 	        'grid_mode' => 'grid-block',
 	        'class' => 'small-block-grid-1,medium-block-grid-3',
 	        'template' =>'',
@@ -103,6 +106,9 @@ function cornerstone_shortcode_miniloop ($atts,$enclosing_text) {
 		if (isset($a['orderby']) && isset($a['order'])) {
 			$query['orderby'] = $a['orderby'];
 			$query['order'] = $a['order'];
+		}
+		if (isset($a['meta_key'])) {
+			$query['meta_key'] = $a['meta_key'];
 		}
 		if (isset($a['post__in'])) {
 			//  match tool to verify that $a['post__in'] matches  ([0-9],)* eg. 15,58,69 or 4 
