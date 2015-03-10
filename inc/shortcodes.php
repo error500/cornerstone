@@ -48,6 +48,9 @@ add_shortcode( 'video', 'cornerstone_display_video' );
 *		posts_per_page : the nomber of items to load
 *		orderby : the item for ordering
 *		order : the choosed order
+*		filter_meta_key : to implement  filtering on a custo meta (to be used with filter meta compare and filter meta value)
+*		filter_meta_compare : admit right comparing operators ">" or "<=" ..
+*		filter_meta_value : admit keyword "now" or any other value
 *		template : name of the template for the displayed article
 *	Foundation params:
 *		grid_mode : grid or grid-block (default)
@@ -88,6 +91,9 @@ function cornerstone_shortcode_miniloop ($atts,$enclosing_text) {
 	        'posts_per_page' =>'3',
 	        'orderby' => 'date', 'order' => 'DESC',
 	        'meta_key' => '',
+	        'filter_meta_key'=>'',
+	        'filter_meta_compare'=>'',
+	        'filter_meta_value'=>'',
 	        'grid_mode' => 'grid-block',
 	        'class' => 'small-block-grid-1,medium-block-grid-3',
 	        'template' =>'',
@@ -110,6 +116,22 @@ function cornerstone_shortcode_miniloop ($atts,$enclosing_text) {
 		if (isset($a['meta_key'])) {
 			$query['meta_key'] = $a['meta_key'];
 		}
+		if (isset($a['filter_meta_key']) && isset($a['filter_meta_compare']) && isset($a['filter_meta_value']) ) {
+			if ($a['filter_meta_value']=='now') {
+				$filter_meta_value = date('dmY', strtotime("now"));
+			} else {
+				$filter_meta_value = $a['filter_meta_value'];
+			}
+
+			$query['meta_query'] = array(
+				array(
+					'key' => $a['filter_meta_key'],
+					'compare' => $a['filter_meta_compare'],
+					'value' => $filter_meta_value
+				)
+			);
+		}
+
 		if (isset($a['post__in'])) {
 			//  match tool to verify that $a['post__in'] matches  ([0-9],)* eg. 15,58,69 or 4 
 			if  ( preg_match ('/^([0-9]*,)*[0-9]*$/',$a['post__in'] )) {
