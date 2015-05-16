@@ -90,13 +90,13 @@ function cornerstone_shortcode_miniloop ($atts,$enclosing_text) {
 	        'post_status'=>'publish',
 	        'posts_per_page' =>'3',
 	        'orderby' => 'date', 'order' => 'DESC',
-	        'meta_key' => '',
+	        'meta_key' => null,
 	        'filter_meta_key'=>null,
 	        'filter_meta_compare'=>null,
 	        'filter_meta_value'=>null,
 	        'grid_mode' => 'grid-block',
 	        'class' => 'small-block-grid-1,medium-block-grid-3',
-	        'template' =>'',
+	        'template' =>null,
 	        'display_category_name' =>'false'
 	        
 	    ), $atts );
