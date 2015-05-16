@@ -26,14 +26,5 @@
     "google",
     "maps",
     "googlemaps"
-  ],
-  "_release": "6.0.0",
-  "_resolution": {
-    "type": "version",
-    "tag": "v6.0.0",
-    "commit": "5ffb79666ed26968c39bdd84f73d46be8f1c96e3"
-  },
-  "_source": "git://github.com/jbdemonte/gmap3.git",
-  "_target": "*",
-  "_originalSource": "jbdemonte/gmap3"
+  ]
 }

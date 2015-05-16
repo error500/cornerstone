@@ -9,15 +9,14 @@
   "devDependencies": {
     "foundation": "5.2.2"
   },
-  "homepage": "https://github.com/OwlFonk/OwlCarousel2",
+  "homepage": "https://github.com/smashingboxes/OwlCarousel2",
   "_release": "e5aa7762f8",
   "_resolution": {
     "type": "branch",
     "branch": "master",
     "commit": "e5aa7762f8cc1650ce05e2eaa3d118b0ee867bee"
   },
-  "_source": "git://github.com/OwlFonk/OwlCarousel2.git",
+  "_source": "git://github.com/smashingboxes/OwlCarousel2.git",
   "_target": "*",
-  "_originalSource": "owl.carousel",
-  "_direct": true
+  "_originalSource": "smashingboxes/OwlCarousel2"
 }
