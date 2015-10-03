@@ -101,7 +101,7 @@ if ( ! function_exists( 'load_cornerstone_scripts' ) ) {
 		
 		wp_enqueue_script(
 			'foundation_modernizr_js',
-			get_template_directory_uri() . '/libs/modernizr/modernizr.js',
+			get_template_directory_uri() . '/js/modernizr.js',
 			array(),
 			'2.8.3',
 			false
@@ -109,14 +109,14 @@ if ( ! function_exists( 'load_cornerstone_scripts' ) ) {
 
 		wp_enqueue_script(
 			'foundation_js',
-			get_template_directory_uri() . '/libs/foundation/js/foundation.min.js',
+			get_template_directory_uri() . '/js/foundation.min.js',
 			array('jquery'),
 			'5.5.2',
 			true
 		);
 		wp_enqueue_script(
 			'foundation_topbar_js',
-			get_template_directory_uri() . '/libs/foundation/js/foundation/foundation.topbar.js',
+			get_template_directory_uri() . '/js/foundation.topbar.js',
 			array('jquery'),
 			'5.5.2',
 			true
