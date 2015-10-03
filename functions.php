@@ -93,6 +93,11 @@ add_theme_support( 'automatic-feed-links' );
 if ( ! function_exists( 'load_cornerstone_scripts' ) ) {
 
 	function load_cornerstone_scripts() {
+		/*if( !is_admin() ){
+			wp_deregister_script('jquery');
+			wp_register_script('jquery', ("https://code.jquery.com/jquery-2.1.4.js"), null,null,true );
+			wp_enqueue_script('jquery');
+		}*/
 		
 		wp_enqueue_script(
 			'foundation_modernizr_js',
@@ -109,14 +114,7 @@ if ( ! function_exists( 'load_cornerstone_scripts' ) ) {
 			'5.3.0',
 			true
 		);
-		// Load of owl migrated to child
-		/*wp_enqueue_script(
-			'owl.carousel_js',
-			get_template_directory_uri() . '/libs/owl.carousel/dist/owl.carousel.min.js',
-			array('jquery'),
-			'2.0',
-			true
-		);*/
+
 		wp_enqueue_script(
 			'foundation_init_js',
 			get_template_directory_uri() . '/js/foundation_init.js',
@@ -124,6 +122,7 @@ if ( ! function_exists( 'load_cornerstone_scripts' ) ) {
 			'1.0',
 			true
 		);
+
 	}
 }
 
