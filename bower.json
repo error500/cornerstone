@@ -4,7 +4,8 @@
   "private": "true",
   "dependencies": {
     "foundation": "zurb/bower-foundation",
-    "owl.carousel": "*",
-    "gmap3": "https://github.com/jbdemonte/gmap3.git#~6.0.0"
+    "owl.carousel": "smashingboxes/OwlCarousel2",
+    "gmap3": "jbdemonte/gmap3",
+    "Tax-Meta-Class": "bainternet/Tax-Meta-Class"
   }
 }
