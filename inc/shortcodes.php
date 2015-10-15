@@ -97,7 +97,8 @@ function cornerstone_shortcode_miniloop ($atts,$enclosing_text) {
 	        'grid_mode' => 'grid-block',
 	        'class' => 'small-block-grid-1,medium-block-grid-3',
 	        'template' =>null,
-	        'display_category_name' =>'false'
+	        'display_category_name' =>'false',
+	        'ignore_sticky_posts' => 1
 	        
 	    ), $atts );
 		extract($a);
@@ -116,6 +117,10 @@ function cornerstone_shortcode_miniloop ($atts,$enclosing_text) {
 		if (isset($a['meta_key'])) {
 			$query['meta_key'] = $a['meta_key'];
 		}
+		if (isset($a['ignore_sticky_posts'])) {
+			$query['ignore_sticky_posts'] = $a['ignore_sticky_posts']; 
+		}
+
 		if (isset($a['filter_meta_key']) && isset($a['filter_meta_compare']) && isset($a['filter_meta_value']) ) {
 			if ($a['filter_meta_value']=='now') {
 				$filter_meta_value = date('dmY', strtotime("now"));

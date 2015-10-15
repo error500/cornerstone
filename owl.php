@@ -17,6 +17,7 @@ $owlsize ="";
 		<div id="content" role="main">
 			<?php 
 			// load Foundation initialisation script in footer
+			//TODO homlogeneiser owl (cornerstone ou child ? harmoniser avec l'appel de la librairie
 			if ( ! function_exists( 'cornerstone_owl_init' ) ) {
 			 function cornerstone_owl_init() { ?>
 			 	<script type="text/javascript">
