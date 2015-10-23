@@ -47,7 +47,7 @@ add_shortcode( 'video', 'cornerstone_display_video' );
 *		filter_value : the value of the filter
 *		posts_per_page : the nomber of items to load
 *		orderby : the item for ordering
-*		order : the choosed order
+*		order : the chosen order
 *		filter_meta_key : to implement  filtering on a custo meta (to be used with filter meta compare and filter meta value)
 *		filter_meta_compare : admit right comparing operators ">" or "<=" ..
 *		filter_meta_value : admit keyword "now" or any other value
@@ -61,9 +61,10 @@ add_shortcode( 'video', 'cornerstone_display_video' );
 *	Example ;
 *		3 last post	
 *		[loop filter_by=post_type filter_value=post posts_per_page=3 orderby=date order=DESC class=small-block-grid-3]
-*		specified posts
-*		[loop filter_by=post filter_value=16,18]
-*
+*		specified posts without querying sticky posts
+*		[loop filter_by=post filter_value=16,18 ignore_sticky_posts=1]
+ *		only sticky posts
+ *		[loop filter_by=post filter_value=sticky_posts ignore_sticky_posts=0]*
 *  default values 
 *		'filter_by' => 'post_type',
 *       'post_status'=>'publish',
@@ -138,14 +139,20 @@ function cornerstone_shortcode_miniloop ($atts,$enclosing_text) {
 		}
 
 		if (isset($a['post__in'])) {
-			//  match tool to verify that $a['post__in'] matches  ([0-9],)* eg. 15,58,69 or 4 
-			if  ( preg_match ('/^([0-9]*,)*[0-9]*$/',$a['post__in'] )) {
+			//  match tool to verify that $a['post__in'] matches  ([0-9],)* eg. 15,58,69 or 4  or sticky_posts
+			if ($a['post__in']=='sticky_posts'){
+				$sticky = get_option( 'sticky_posts' );
+				/* Sort the stickies with the newest ones at the top */
+				rsort( $sticky );
+				$query['post__in']=$sticky;
+			} else if ( preg_match ('/^([0-9]*,)*[0-9]*$/',$a['post__in'] )) {
 				$query['post__in'] = explode(',',$a['post__in']);	
 			} else {
 				$shortcode_msg[] = 'Le champ post__in n\'est pas défini correctement : il doit correspondre à une succession d\'ID séparés par des virgules : 15,8,9';
 			}
 			
 		}
+
 		if (isset($a['class'])) {
 			
 			//  match tool to verify that $a['class'] matches  ([0-9],)* eg. foo  or foo,bar
@@ -186,6 +193,7 @@ function cornerstone_shortcode_miniloop ($atts,$enclosing_text) {
 			<?php }
 			?> </div><?php
 		} else {
+			var_dump($query);
 			// Starts the query and displaying
 			$loop = new WP_Query( $query );
 			?><section class="cs_section">
