@@ -193,7 +193,6 @@ function cornerstone_shortcode_miniloop ($atts,$enclosing_text) {
 			<?php }
 			?> </div><?php
 		} else {
-			var_dump($query);
 			// Starts the query and displaying
 			$loop = new WP_Query( $query );
 			?><section class="cs_section">
