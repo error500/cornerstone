@@ -6,10 +6,36 @@
 *	=> When only Title & Content : The text.
 *
 */
-
-
-
 $owlsize ="";
+
+
+if ( ! function_exists( 'cornerstone_owl_init' ) ) {
+ function cornerstone_owl_init() { ?>
+ 	<script type="text/javascript">
+	jQuery('.owl-carousel').owlCarousel({
+		    sliderloop:true,
+		    margin:10,
+		    nav:false,
+		    autoplay:true,
+		    loop:true,
+			autoplayTimeout:5000,
+		    responsive:{
+		        0:{
+		            items:1
+		        },
+		        600:{
+		            items:1
+		        },
+		        1000:{
+		            items:1
+		        }
+		    }
+		});
+
+ 	</script>
+ <?php }
+}
+add_action( 'wp_footer', 'cornerstone_owl_init', 9997 );
 
 ?>
 <div class="row">
@@ -18,33 +44,7 @@ $owlsize ="";
 			<?php 
 			// load Foundation initialisation script in footer
 			//TODO homlogeneiser owl (cornerstone ou child ? harmoniser avec l'appel de la librairie
-			if ( ! function_exists( 'cornerstone_owl_init' ) ) {
-			 function cornerstone_owl_init() { ?>
-			 	<script type="text/javascript">
-				jQuery('.owl-carousel').owlCarousel({
-					    sliderloop:true,
-					    margin:10,
-					    nav:false,
-					    autoplay:true,
-					    loop:true,
-						autoplayTimeout:5000,
-					    responsive:{
-					        0:{
-					            items:1
-					        },
-					        600:{
-					            items:1
-					        },
-					        1000:{
-					            items:1
-					        }
-					    }
-					});
 			
-			 	</script>
-			 <?php }
-			}
-			add_action( 'wp_footer', 'cornerstone_owl_init', 9997 );
 			
 			$sliderargs = array('post_type' => 'Slider','nopaging'=>'true');
 			$sliderloop = new WP_Query( $sliderargs );
