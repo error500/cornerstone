@@ -12,7 +12,7 @@ $owlsize ="";
 if ( ! function_exists( 'cornerstone_owl_init' ) ) {
  function cornerstone_owl_init() { ?>
  	<script type="text/javascript">
-	jQuery('.owl-carousel').owlCarousel({
+	jQuery('.cs-owl-init').owlCarousel({
 		    sliderloop:true,
 		    margin:10,
 		    nav:false,
@@ -48,7 +48,7 @@ add_action( 'wp_footer', 'cornerstone_owl_init', 9997 );
 			
 			$sliderargs = array('post_type' => 'Slider','nopaging'=>'true');
 			$sliderloop = new WP_Query( $sliderargs );
-			echo "<div class='owl-carousel'>";
+			echo "<div class='cs-owl-init owl-carousel'>";
 			while ( $sliderloop->have_posts() ) : $sliderloop->the_post();
 				if(has_post_thumbnail()) {
 					if($owlsize != '') {
