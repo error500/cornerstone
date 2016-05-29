@@ -98,3 +98,5 @@
 
 <?php do_action( 'cornerstone_after_header' ); ?>
 <div class="off-canvas-content" data-off-canvas-content>
+
+<?php get_template_part( 'owl', get_post_format() ); ?>

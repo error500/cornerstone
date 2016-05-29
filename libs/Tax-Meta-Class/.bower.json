@@ -1,0 +1,13 @@
+{
+  "name": "Tax-Meta-Class",
+  "homepage": "https://github.com/bainternet/Tax-Meta-Class",
+  "_release": "882850fea3",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "882850fea31f6049166d564bcd4b51e837dc49bd"
+  },
+  "_source": "git://github.com/bainternet/Tax-Meta-Class.git",
+  "_target": "*",
+  "_originalSource": "bainternet/Tax-Meta-Class"
+}
