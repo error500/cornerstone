@@ -4,7 +4,7 @@
   "private": "true",
   "dependencies": {
     "modernizr": "2.8.3",
-    "foundation": "zurb/bower-foundation",
+    "foundation-sites": "*",
     "owl.carousel": "smashingboxes/OwlCarousel2",
     "Tax-Meta-Class": "bainternet/Tax-Meta-Class"
   }

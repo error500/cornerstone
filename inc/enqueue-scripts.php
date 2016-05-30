@@ -11,13 +11,13 @@ if ( ! function_exists( 'load_cornerstone_css' ) ) {
 
 	function load_cornerstone_css() {
 
-		wp_enqueue_style(
+		/*wp_enqueue_style(
 			'foundation_css',
 			get_template_directory_uri() . '/css/foundation.min.css',
 			array(),
 			false,
 			'all'
-		);
+		);*/
 
 		wp_enqueue_style(
 			'motion-ui_css',
