@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b3a41457-2165-4a27-a38a-36dbe8d54351" name="Default" comment="Merge branch 'foundation-6' of https://github.com/error500/cornerstone into foundation-6&#10;&#10;# Conflicts:&#10;#&#9;.bowerrc&#10;#&#9;.gitignore&#10;#&#9;README.md&#10;#&#9;archive.php&#10;#&#9;bower.json&#10;#&#9;category.php&#10;#&#9;composer.json&#10;#&#9;content-link.php&#10;#&#9;content.php&#10;#&#9;css/foundation.css&#10;#&#9;css/foundation.min.css&#10;#&#9;functions.php&#10;#&#9;header.php&#10;#&#9;inc/foundation.php&#10;#&#9;inc/shortcodes.php&#10;#&#9;js/foundation.min.js&#10;#&#9;js/modernizr.js&#10;#&#9;libs/Tax-Meta-Class/.bower.json&#10;#&#9;libs/Tax-Meta-Class/README.md&#10;#&#9;libs/Tax-Meta-Class/Tax-meta-class/Tax-meta-class.php&#10;#&#9;libs/Tax-Meta-Class/Tax-meta-class/js/tax-meta-clss.js&#10;#&#9;libs/Tax-Meta-Class/class-usage-demo.php&#10;#&#9;libs/jquery/.bower.json&#10;#&#9;libs/jquery/bower.json&#10;#&#9;libs/jquery/dist/jquery.js&#10;#&#9;libs/jquery/dist/jquery.min.js&#10;#&#9;libs/jquery/dist/jquery.min.map&#10;#&#9;libs/jquery/src/ajax.js&#10;#&#9;libs/jquery/src/ajax/jsonp.js&#10;#&#9;libs/jquery/src/ajax/load.js&#10;#&#9;libs/jquery/src/ajax/parseJSON.js&#10;#&#9;libs/jquery/src/ajax/parseXML.js&#10;#&#9;libs/jquery/src/ajax/script.js&#10;#&#9;libs/jquery/src/ajax/var/nonce.js&#10;#&#9;libs/jquery/src/ajax/var/rquery.js&#10;#&#9;libs/jquery/src/ajax/xhr.js&#10;#&#9;libs/jquery/src/attributes.js&#10;#&#9;libs/jquery/src/attributes/attr.js&#10;#&#9;libs/jquery/src/attributes/classes.js&#10;#&#9;libs/jquery/src/attributes/prop.js&#10;#&#9;libs/jquery/src/attributes/support.js&#10;#&#9;libs/jquery/src/attributes/val.js&#10;#&#9;libs/jquery/src/callbacks.js&#10;#&#9;libs/jquery/src/core.js&#10;#&#9;libs/jquery/src/core/access.js&#10;#&#9;libs/jquery/src/core/init.js&#10;#&#9;libs/jquery/src/core/parseHTML.js&#10;#&#9;libs/jquery/src/core/ready.js&#10;#&#9;libs/jquery/src/core/var/rsingleTag.js&#10;#&#9;libs/jquery/src/css.js&#10;#&#9;libs/jquery/src/css/addGetHookIf.js&#10;#&#9;libs/jquery/src/css/curCSS.js&#10;#&#9;libs/jquery/src/css/defaultDisplay.js&#10;#&#9;libs/jquery/src/css/hiddenVisibleSelectors.js&#10;#&#9;libs/jquery/src/css/support.js&#10;#&#9;libs/jquery/src/css/var/cssExpand.js&#10;#&#9;libs/jquery/src/css/var/getStyles.js&#10;#&#9;libs/jquery/src/css/var/isHidden.js&#10;#&#9;libs/jquery/src/css/var/rmargin.js&#10;#&#9;libs/jquery/src/css/var/rnumnonpx.js&#10;#&#9;libs/jquery/src/data.js&#10;#&#9;libs/jquery/src/data/Data.js&#10;#&#9;libs/jquery/src/deferred.js&#10;#&#9;libs/jquery/src/deprecated.js&#10;#&#9;libs/jquery/src/dimensions.js&#10;#&#9;libs/jquery/src/effects.js&#10;#&#9;libs/jquery/src/effects/Tween.js&#10;#&#9;libs/jquery/src/effects/animatedSelector.js&#10;#&#9;libs/jquery/src/event.js&#10;#&#9;libs/jquery/src/event/ajax.js&#10;#&#9;libs/jquery/src/event/alias.js&#10;#&#9;libs/jquery/src/event/support.js&#10;#&#9;libs/jquery/src/exports/amd.js&#10;#&#9;libs/jquery/src/exports/global.js&#10;#&#9;libs/jquery/src/intro.js&#10;#&#9;libs/jquery/src/jquery.js&#10;#&#9;libs/jquery/src/manipulation.js&#10;#&#9;libs/jquery/src/manipulation/_evalUrl.js&#10;#&#9;libs/jquery/src/manipulation/support.js&#10;#&#9;libs/jquery/src/manipulation/var/rcheckableType.js&#10;#&#9;libs/jquery/src/offset.js&#10;#&#9;libs/jquery/src/outro.js&#10;#&#9;libs/jquery/src/queue.js&#10;#&#9;libs/jquery/src/queue/delay.js&#10;#&#9;libs/jquery/src/selector-native.js&#10;#&#9;libs/jquery/src/selector-sizzle.js&#10;#&#9;libs/jquery/src/selector.js&#10;#&#9;libs/jquery/src/serialize.js&#10;#&#9;libs/jquery/src/traversing.js&#10;#&#9;libs/jquery/src/traversing/findFilter.js&#10;#&#9;libs/jquery/src/traversing/var/rneedsContext.js&#10;#&#9;libs/jquery/src/var/arr.js&#10;#&#9;libs/jquery/src/var/class2type.js&#10;#&#9;libs/jquery/src/var/concat.js&#10;#&#9;libs/jquery/src/var/hasOwn.js&#10;#&#9;libs/jquery/src/var/indexOf.js&#10;#&#9;libs/jquery/src/var/pnum.js&#10;#&#9;libs/jquery/src/var/push.js&#10;#&#9;libs/jquery/src/var/rnotwhite.js&#10;#&#9;libs/jquery/src/var/slice.js&#10;#&#9;libs/jquery/src/var/support.js&#10;#&#9;libs/jquery/src/var/toString.js&#10;#&#9;libs/jquery/src/wrap.js&#10;#&#9;libs/modernizr/.bower.json&#10;#&#9;libs/owl.carousel/.bower.json&#10;#&#9;libs/owl.carousel/.gitignore&#10;#&#9;libs/owl.carousel/.travis.yml&#10;#&#9;libs/owl.carousel/Gruntfile.js&#10;#&#9;libs/owl.carousel/LICENSE&#10;#&#9;libs/owl.carousel/README.md&#10;#&#9;libs/owl.carousel/_config.json&#10;#&#9;libs/owl.carousel/bower.json&#10;#&#9;libs/owl.carousel/docs_src/assets/scss/custom.scss&#10;#&#9;libs/owl.carousel/docs_src/assets/scss/demos.scss&#10;#&#9;libs/owl.carousel/docs_src/assets/scss/highlight.scss&#10;#&#9;libs/owl.carousel/docs_src/data/options.json&#10;#&#9;libs/owl.carousel/docs_src/templates/pages/demos/animate.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/pages/demos/demos.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/pages/demos/lazyLoad.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/pages/demos/video.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/pages/docs/api-events.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/pages/docs/api-options.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/pages/docs/dev-buildin-plugins.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/pages/docs/dev-external.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/pages/docs/dev-styles.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/pages/docs/started-faq.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/pages/docs/started-installation.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/pages/docs/started-welcome.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/pages/docs/support-contact.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/pages/docs/support-contributing.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/partials/head.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/partials/header.hbs&#10;#&#9;libs/owl.carousel/docs_src/templates/partials/home-hero.hbs&#10;#&#9;libs/owl.carousel/package.json&#10;#&#9;libs/owl.carousel/src/js/owl.animate.js&#10;#&#9;libs/owl.carousel/src/js/owl.autoheight.js&#10;#&#9;libs/owl.carousel/src/js/owl.autoplay.js&#10;#&#9;libs/owl.carousel/src/js/owl.autorefresh.js&#10;#&#9;libs/owl.carousel/src/js/owl.carousel.js&#10;#&#9;libs/owl.carousel/src/js/owl.hash.js&#10;#&#9;libs/owl.carousel/src/js/owl.lazyload.js&#10;#&#9;libs/owl.carousel/src/js/owl.navigation.js&#10;#&#9;libs/owl.carousel/src/js/owl.support.js&#10;#&#9;libs/owl.carousel/src/js/owl.support.modernizr.js&#10;#&#9;libs/owl.carousel/src/js/owl.video.js&#10;#&#9;libs/owl.carousel/src/scss/_theme.scss&#10;#&#9;libs/owl.carousel/src/scss/owl.carousel.scss&#10;#&#9;libs/owl.carousel/src/scss/owl.theme.default.scss&#10;#&#9;libs/owl.carousel/src/scss/owl.theme.green.scss&#10;#&#9;libs/owl.carousel/test/index.html&#10;#&#9;libs/owl.carousel/test/unit/core.js&#10;#&#9;page-templates/orbit.php&#10;#&#9;page.php&#10;#&#9;style.css&#10;" />
+    <ignored path="cornerstone-6.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="cornerstone-6" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="header.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/header.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.25373134">
+              <caret line="19" column="71" selection-start-line="19" selection-start-column="71" selection-end-line="19" selection-end-column="71" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-6" />
+    <option name="y" value="-6" />
+    <option name="width" value="1932" />
+    <option name="height" value="1052" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cornerstone-6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cornerstone-6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cornerstone-6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cornerstone-6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cornerstone-6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cornerstone-6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cornerstone-6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="foundation-sites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cornerstone-6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cornerstone-6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="foundation-sites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cornerstone-6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cornerstone-6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="foundation-sites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../foulee-vourloise/htdocs/wp-content/themes/foulee-vourloise-1" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b3a41457-2165-4a27-a38a-36dbe8d54351" name="Default" comment="" />
+      <created>1464844144788</created>
+      <option name="number" value="Default" />
+      <updated>1464844144788</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-6" y="-6" width="1932" height="1052" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25266525" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25373134">
+          <caret line="19" column="71" selection-start-line="19" selection-start-column="71" selection-end-line="19" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
